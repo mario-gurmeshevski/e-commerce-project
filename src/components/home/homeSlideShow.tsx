@@ -18,7 +18,7 @@ const HomeSlideShow = () => {
 
 
     return (
-        <div className="relative w-full h-[100svh] z-0 overflow-hidden">
+        <div className="relative w-full h-[100vh] z-0 overflow-hidden">
             {images.map((image, index) => (
                 <div
                     key={index}
@@ -30,7 +30,6 @@ const HomeSlideShow = () => {
                         opacity: index === currentIndex ? 1 : 0,
                     }}
                 >
-                    <div className="absolute inset-0 bg-black opacity-30"></div>
                 </div>
             ))}
         </div>

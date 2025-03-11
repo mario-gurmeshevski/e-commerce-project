@@ -6,129 +6,105 @@ const Terms = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
                 <header className="mb-12 text-center">
                     <h2 className="text-3xl font-bold text-gray-900 mb-4 bg-clip-text">
-                        Terms and Conditions
+                        Услови за користење
                     </h2>
                     <div className="flex items-center justify-center space-x-2 text-gray-500">
                         <ClipboardIcon className="w-4 h-4 text-gray-500" />
-                        <span>Effective Since October 2021</span>
+                        <span>Во сила од октомври 2021</span>
                     </div>
                 </header>
 
                 <div className="space-y-12">
-                    {/* Delivery Deadline */}
+                    {/* Рок на испорака */}
                     <div className="py-8 border-b border-gray-100">
                         <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Delivery deadline
+                            Рок на испорака
                         </h3>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
-                            <p>Delivery time is up to 5 working days from the moment of payment confirmation.</p>
+                            <p>Рокот на испорака е до 5 работни дена од моментот на потврда на плаќањето.</p>
                             <div className="p-4 rounded-lg border">
-                                <p><span className="font-semibold">BeeHappy-Makmela</span> reserves the right to extend the delivery time by prior agreement with the buyer.</p>
+                                <p><span className="font-semibold">BeeHappy-Makmela</span> го задржува правото да го продолжи рокот на испорака во претходен договор со купувачот.</p>
                             </div>
-                            <p>Delivery is made only on the territory of the Republic of North Macedonia.</p>
+                            <p>Испораката се врши само на територијата на Република Северна Македонија.</p>
                         </div>
                     </div>
 
-                    {/* Taking the Order */}
+                    {/* Преземање на нарачката */}
                     <div className="py-8 border-b border-gray-100">
                         <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-
-                            Taking the order
+                            Преземање на нарачката
                         </h3>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="bg-gray-50 p-4 rounded-lg">
-                                    <p>Prior to the delivery of the product, the buyer will be contacted by phone, on the phone number left for contact, to confirm the date and time of delivery.</p>
+                                    <p>Пред испораката на производот, купувачот ќе биде телефонски контактиран, на телефонскиот број оставен за контакт, за потврдување на датумот и времето на испораката.</p>
                                 </div>
                                 <div className="bg-gray-50 p-4 rounded-lg">
-                                    <p>The prices are valid for the cities throughout the Republic of North Macedonia.</p>
-                                    <p className="mt-2">Delivery is done through our delivery service or through external partners.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Shipping Fees */}
-                    <div className="py-8 border-b border-gray-100">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Shipping fees
-                        </h3>
-                        <div className="space-y-4 text-gray-600 leading-relaxed">
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="p-6">
-                                    <h4 className="font-medium mb-3 text-gray-700">Free Shipping</h4>
-                                    <ul className="space-y-2">
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                                            Skopje: Free
-                                        </li>
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                                            Other towns: Free over 2,000 denars
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="p-6">
-                                    <h4 className="font-medium mb-3 text-gray-700">Paid Shipping</h4>
-                                    <p className="flex items-center">
-                                        <svg className="w-4 h-4 mr-2 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        Other towns under 2,000 denars: 150 denars
-                                    </p>
+                                    <p>Цените важат за градовите низ цела Република Северна Македонија.</p>
+                                    <p className="mt-2">Испораката се врши преку нашата служба за испорака или преку надворешни соработници.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Receiving Products */}
+                    {/* Цена на испорака */}
                     <div className="py-8 border-b border-gray-100">
                         <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Receiving the products
+                            Цена на испорака
                         </h3>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
-                            <p>Each buyer is obliged when checking the product/s, to check for possible damage during the transport, and if it is more than one product, to check if any product is missing.</p>
-                            <p>If the product is delivered damaged, or a certain product is missing from the order, the buyer should inform us immediately, in order to take measures to eliminate the unintentional error.</p>
-                            <p>In this case, the cost of replacing the product shall be borne by us.</p>
+                            <ul className="space-y-2">
+                                <li>Доставата за Скопје е бесплатна.</li>
+                                <li>Цената за достава во останатите градови над 2000 денари е бесплатна.</li>
+                                <li>Цената за достава во останатите градови под 2000 денари изнесува 150 денари.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    {/* Returns and Exchanges */}
+                    {/* Прием на производите */}
                     <div className="py-8 border-b border-gray-100">
                         <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Returns and exchanges of products
+                            Прием на производите
                         </h3>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
-                            <p>If the buyer wants to replace the product, he is obliged to keep it undamaged, unpacked and unused together with all attached documents. If there is a delay in delivery by the company engaged to perform the delivery, BeeHappy-Makmela cannot take any responsibility.</p>
-                            <p>In case the buyer wants to return the product, not through our fault or the fault of the supplier, and wants the refunded amount to be returned to the product, then the shipping cost will be deducted from the final amount.</p>
+                            <p>Секој купувач е должен при превземање на производот, да го провери од евентуални оштетувања при транспорт, а доколку се работи за повеќе производи, да провери дали некој производ недостасува.</p>
+                            <p>Доколку производот е испорачан оштетен, или одреден производ недостасува од нарачката, купувачот треба да не информира веднаш, како би превземале мерки за отстранување на ненамерната грешка.</p>
+                            <p>Во овој случај, трошоците за замена на производот ќе бидат на наш товар.</p>
                         </div>
                     </div>
 
-                    {/* Other Shipping Info */}
+                    {/* Враќање и замена */}
+                    <div className="py-8 border-b border-gray-100">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                            Враќање и замена
+                        </h3>
+                        <div className="space-y-4 text-gray-600 leading-relaxed">
+                            <p>Доколку купувачот сака да го замени производот, должен е да го чува неоштетен, неотпакуван и неупотребуван заедно со сите приложени документи. Доколку има доцнење од страна на компанијата која ја врши доставата, BeeHappy-Makmela не може да превземе никаква одговорност.</p>
+                            <p>Во случај купувачот да сака да го врати производот, не по наша вина или вина на доставувачот, и сака да му се врати уплатената сума, тогаш од крајниот износ ќе биде одбиен трошокот за транспорт.</p>
+                        </div>
+                    </div>
+
+                    {/* Останати информации */}
                     <div className="py-8">
                         <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-
-                            Other shipping information
+                            Останати информации за испорака
                         </h3>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="bg-gray-50 p-4 rounded-lg">
-                                    <p>Deliveries on Saturday after 4 pm, on Sundays and on public holidays are not made.</p>
-                                </div>
-                                <div className="bg-gray-50 p-4 rounded-lg">
-                                    <p>If the order is made after 5 pm, it will be checked by us the next working day, and after receiving confirmation of the successful transaction - payment, the delivery period begins.</p>
-                                </div>
-                            </div>
-                            <p>If the order is made on Friday after 4 pm, Saturday, Sunday or on a non-working day, this procedure starts from the first following working day.</p>
-                            <p>Weekends and non-working days are not included in the delivery deadline.</p>
-                            <p>The delivery of the product is done at the specified delivery address by the buyer</p>
+                            <ul className="list-disc pl-[1.5rem] space-y-[0.5rem]">
+                                <li>Испорака во сабота по 16 часот, во недела и државни празници не се врши.</li>
+                                <li>Нарачки направени по 17 часот ќе бидат проверени наредниот работен ден.</li>
+                                <li>Викендите и неработните денови не се пресметуваат во рокот за испорака.</li>
+                                <li>Испораката се врши до адресата наведена од купувачот.</li>
+                            </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

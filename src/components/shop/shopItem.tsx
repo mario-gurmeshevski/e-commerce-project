@@ -93,7 +93,7 @@ const ShopItem = ({ item }: { item: Honey }) => {
                         }`}
                     />
                     <span className="font-medium">
-                        {item.stock > 0 ? 'Додади во кошничка' : 'Нема залиха'}
+                        {item.stock > 0 ? 'Во кошничка' : 'Нема залиха'}
                     </span>
                 </button>
                 <Transition

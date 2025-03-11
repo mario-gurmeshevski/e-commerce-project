@@ -13,19 +13,18 @@ export default function Order() {
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const response = await axios.get(
-                    `/api/order/${id}`
-                );
+                const response = await axios.get(`/api/order/${id}`);
                 setOrder(response.data);
-            } catch (err) {
-                setError('Order not found or access denied');
+            } catch (_err) {
+                setError('Нарачката не е пронајдена или не постои');
             } finally {
                 setIsLoading(false);
             }
         };
 
-        fetchOrder();
+        void fetchOrder();
     }, [id]);
+
 
     useEffect(() => {
         if (order) {
@@ -45,7 +44,7 @@ export default function Order() {
             navigate('/', {
                 state: {
                     showCancelSuccess: true,
-                    message: 'Your order has been successfully canceled'
+                    message: 'Вашата нарачка беше успешно откажана'
                 }
             });
         } catch (err) {
@@ -67,10 +66,10 @@ export default function Order() {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
                     <div>
                         <h1 className="text-xl sm:text-2xl font-bold mb-2">
-                            Order #{order.orderId}
+                            Нарачка #{order.orderId}
                         </h1>
                         <p className={`text-sm ${order.status ? 'text-green-600' : 'text-yellow-400'}`}>
-                            Status: {order.status ? 'Ordered' : 'Pending'}
+                            Статус: {order.status ? 'Доставено' : 'Во процес'}
                         </p>
                     </div>
 
@@ -79,7 +78,7 @@ export default function Order() {
                             onClick={handleCancel}
                             className="px-3 sm:px-4 py-1.5 sm:py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600 self-start"
                         >
-                            Cancel Order
+                            Откажете ја нарачката
                         </button>
                     )}
                 </div>
@@ -88,30 +87,30 @@ export default function Order() {
                     <div className="bg-gray-50 p-3 rounded-md">
                         <h2 className="font-semibold text-sm sm:text-base mb-2">Доставни Информации</h2>
                         <div className="space-y-1 text-sm sm:text-base">
-                            <p>{order.firstName} {order.lastName}</p>
-                            <p>{order.address}</p>
-                            <p>{order.city}, {order.municipality}</p>
-                            <p>Postal Code: {order.postalCode}</p>
+                            <p>Име: {order.firstName} {order.lastName}</p>
+                            <p>Адреса: {order.address}</p>
+                            <p>Град: {order.city}, {order.municipality}</p>
+                            <p>Поштенски Број: {order.postalCode}</p>
                         </div>
                     </div>
 
                     <div className="bg-gray-50 p-3 rounded-md">
                         <h2 className="font-semibold text-sm sm:text-base mb-2">Контактни Информации</h2>
                         <div className="space-y-1 text-sm sm:text-base">
-                            <p>Phone: {order.phoneNumber}</p>
+                            <p>Телефонски Број: {order.phoneNumber}</p>
                             <p>Email: {order.email}</p>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <h2 className="font-semibold text-sm sm:text-base mb-4">Order Items</h2>
+                    <h2 className="font-semibold text-sm sm:text-base mb-4">Производи</h2>
                     <div className="space-y-4">
                         {order.cart.items.map(item => (
                             <div key={item.id} className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b pb-2 gap-2">
                                 <div>
                                     <p className="font-medium text-sm sm:text-base">{item.name}</p>
-                                    <p className="text-xs sm:text-sm text-gray-500">Quantity: {item.quantity}</p>
+                                    <p className="text-xs sm:text-sm text-gray-500">Количина: {item.quantity}</p>
                                 </div>
                                 <p className="text-sm sm:text-base">
                                     {(item.price * item.quantity).toFixed(0)} ден.
@@ -122,21 +121,18 @@ export default function Order() {
 
                     <div className="mt-6 pt-4 text-sm sm:text-base">
                         {/* Subtotal */}
-                        <div className="flex justify-between">
-                            <span>Subtotal:</span>
-                            <span>{order.cart.priceSummary.subtotal.toFixed(0)} ден.</span>
+                        <div className="flex">
+                            <span>Цена: {order.cart.priceSummary.subtotal.toFixed(0)} ден.</span>
                         </div>
 
                         {/* Shipping */}
                         <div className="flex justify-between">
-                            <span>Shipping:</span>
-                            <span>{order.cart.priceSummary.shipping.toFixed(0)} ден.</span>
+                            <span>Достава: {order.cart.priceSummary.shipping.toFixed(0)} ден.</span>
                         </div>
 
                         {/* Total */}
-                        <div className="flex justify-between font-semibold mt-2 text-base sm:text-lg">
-                            <span>Total:</span>
-                            <span>{order.cart.priceSummary.total.toFixed(2)} ден.</span>
+                        <div className="flexс font-semibold mt-2 text-base sm:text-lg">
+                            <span>Вкупно: {order.cart.priceSummary.total.toFixed(2)} ден.</span>
                         </div>
                     </div>
                 </div>

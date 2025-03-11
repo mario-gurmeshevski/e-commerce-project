@@ -6,118 +6,118 @@ const Privacy = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
                 <header className="mb-10 text-center">
                     <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center justify-center">
-                        Privacy Policy
+                        Политика за приватност
                     </h1>
                     <div className="flex items-center justify-center space-x-2 text-gray-500">
                         <ClipboardIcon className="w-4 h-4 text-gray-500" />
-                        <span>Effective Since October 2021</span>
+                        <span>Во сила од Октомври 2021</span>
                     </div>                </header>
 
                 <div className="space-y-10 text-gray-700 leading-relaxed">
-                    {/* Introduction */}
+                    {/* Вовед */}
                     <div className="pb-8 border-b border-gray-100">
                         <p className="text-lg text-gray-800">
-                            With the Privacy Policy, we will explain where and how the personal data of all consumers is stored on our website.
+                            Со Политиката на приватност, ќе ви појасниме каде и како се чуваат личните податоци на сите потрошувачи на нашата интернет страна.
                         </p>
                     </div>
 
-                    {/* Scope */}
+                    {/* Опсег */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Policy Scope
+                            Опсег на политиката
                         </h2>
-                        <p>This privacy policy applies only to <a href="https://makmela.com/" className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">www.makmela.com</a>.</p>
+                        <p>Оваа политика на приватност се однесува само за <a href="https://makmela.com/" className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">www.makmela.com</a>.</p>
                     </div>
 
-                    {/* Third-Party Links */}
+                    {/* Надворешни линкови */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            External Links
+                            Надворешни линкови
                         </h2>
-                        <p>If there is a link that links you to other sites, we do not take any responsibility for the personal data protection provided by those websites.</p>
+                        <p>Доколку е присутен линк кој ќе Ве поврзе со други страни, ние не превземаме никаква одговорност во однос на заштитата на личните податоци која ја обезбедуваат тие интернет страни.</p>
                     </div>
 
-                    {/* User Consent */}
+                    {/* Согласност на корисникот */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            User Agreement
+                            Корисничко согласување
                         </h2>
                         <div className="space-y-4">
-                            <p>By registering and buying, every consumer confirms that he is familiar and agrees to our policy of privacy.</p>
-                            <p>By using our Website, you agree to the terms of this Privacy Policy on the Site.</p>
+                            <p>Секој купувач при регистрација и купување, изјавува дека е запознаен и се согласува со нашата политика на приватност.</p>
+                            <p>Со користење на нашата Веб страница, Вие се согласувате со одредбите од оваа Политика за приватност на личните податоци на страницата.</p>
                             <div className="bg-red-50 p-4 rounded-lg border border-red-100">
-                                <p>If you do not agree with this Policy, please do not use our site.</p>
+                                <p>Доколку не се согласувате со оваа Политика, Ве молиме да не ја користите нашата страница.</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Data Collection */}
+                    {/* Собирање податоци */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Collected Information
+                            Собранети информации
                         </h2>
                         <div className="bg-gray-50 p-6 rounded-xl">
-                            <p>The information that is kept by us is:</p>
+                            <p>Информациите кои нам ни се потребни се:</p>
                             <ul className="list-disc pl-6 mt-3 space-y-2 marker:text-blue-500">
-                                <li>Name and Surname,</li>
-                                <li>E-Mail Address,</li>
-                                <li>Address for the delivery and a</li>
-                                <li>Contact telephone number.</li>
+                                <li>Име и презиме,</li>
+                                <li>E-mail адреса,</li>
+                                <li>Адреса на доставување на нарачката и</li>
+                                <li>Телефон за контакт.</li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Data Usage */}
+                    {/* Користење податоци */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Data Handling
+                            Ракување со податоци
                         </h2>
-                        <p>Every personal information that the consumers leave by registering are used for a more precise delivery of the product and realization of the payment, and are kept according to the Act on the Protection of Personal Information and are not to be given to a third party.</p>
+                        <p>Сите лични податоци кои корисникот ги внесува преку регистрација се користат за успешна достава на производот и реализација на плаќањето, а се чуваат согласно одредбите од Законот за заштита на лични податоци и не се отстапуваат на трети страни.</p>
                         <div className="mt-4 p-4 rounded-lg">
-                            <p>The data we collect are stored with us, will not be published, sold or submitted to a third party except to the competent authorities in a manner determined by the legal regulations of the Republic of North Macedonia.</p>
+                            <p>Податоците кои ги собираме и се чуваат кај нас, нема да се објавуваат, продаваат или доставуваат на трета страна освен на надлежните органи на начин определен со законските прописи на Република Северна Македонија.</p>
                         </div>
                     </div>
 
-                    {/* Cookies */}
+                    {/* Колачиња */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Cookie Usage
+                            Користење на колачиња
                         </h2>
                         <div className="space-y-4 bg-yellow-50 p-6 rounded-xl border border-yellow-100">
-                            <p>Our Website may use cookies to improve the user experience.</p>
-                            <p>"Cookies" are small files that are entered on the visitor's computer by the web server.</p>
-                            <p>All information stored within the "Cookies" can be used only for the needs of the web service in a way that your privacy will not be compromised.</p>
-                            <p>Every visitor has the opportunity to choose and set their browser to reject cookies or to issue a warning whenever cookies are sent.</p>
-                            <p>If users select this option, certain parts of the site may not function as intended.</p>
+                            <p>Нашата Веб страница може да користи колачиња („Cookies“) за да се подобри корисничкото искуство.</p>
+                            <p>„Cookies“ се мали датотеки кои се внесуваат на компјутерот на посетителот од страна на веб страницата.</p>
+                            <p>Сите информации кои се меморирани во рамките на „Cookies“ можат да бидат искористени само за потребите на веб услугата и тоа на начин на кој Вашата приватност нема да биде загрозена.</p>
+                            <p>Секој посетител ја има можноста да избере и да го подеси својот пребарувач на интернет да ги одбие колачињата или да јави предупредување секогаш кога ќе се пратат колачиња.</p>
+                            <p>Доколку корисниците ја одберат таа можност, одредени делови од страницата може да не функционираат како што е предвидено.</p>
                         </div>
                     </div>
 
-                    {/* Legal Compliance */}
+                    {/* Правни барања */}
                     <div className="pb-8 border-b border-gray-100">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Legal Requirements
+                            Правни барања
                         </h2>
                         <div className=" p-4 rounded-lg ">
-                            <p><span className="font-semibold">BeeHappy-Makmela</span> reserves the right to use the IP addresses and other data of the users to reveal their identity in case of law enforcement and legal procedures.</p>
+                            <p><span className="font-semibold">BeeHappy-Makmela</span> го задржува правото да ги користи IP aдресите и другите податоци на корисниците за откривање на нивниот идентитет во случај на спроведување на законот и законските постапки.</p>
                         </div>
                     </div>
 
-                    {/* Policy Updates */}
+                    {/* Промени во политиката */}
                     <div className="pb-8">
                         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            Policy Changes
+                            Промени во политиката
                         </h2>
                         <div className="p-6 rounded-xl">
-                            <p>This policy of privacy comes into force on October 2021.</p>
-                            <p className="mt-2">If there are changes in the policy, they will be publicly announced on the web site <a href="https://makmela.com/" className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">www.makmela.com</a> at least 10 days before they come into force.</p>
+                            <p>Оваа политика на приватност стапува на сила од Октомври 2021 година.</p>
+                            <p className="mt-2">Промените во политиката на приватност ќе бидат јавно објавени на интернет страната <a href="https://makmela.com/" className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">www.makmela.com</a> најмалку 10 дена пред да стапат во сила.</p>
                         </div>
                     </div>
                 </div>

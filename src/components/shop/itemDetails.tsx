@@ -144,15 +144,15 @@ const ItemDetails: React.FC = () => {
 
                     {/* Tabs Section */}
                     <TabGroup selectedIndex={selectedTab} onChange={setSelectedTab}>
-                        <TabList className="flex border-b border-gray-200">
+                        <TabList className="flex justify-between w-full">
                             {['ЦВЕТОВИ', 'АРОМА', 'КОНСУМИРАЈ'].map((tab) => (
                                 <Tab
                                     key={tab}
                                     className={({ selected }) => `
-                                        px-4 py-3 text-sm font-medium focus:outline-none
+                                       flex-1 text-center px-4 py-3 text-sm font-medium focus:outline-none
                                         ${selected
                                         ? 'text-black border-b-2 border-black'
-                                        : 'text-gray-500 hover:text-gray-700'}
+                                        : 'text-gray-500 hover:text-gray-700 border-b-2 border-gray-200'}
                                     `}
                                 >
                                     {tab}

@@ -18,12 +18,12 @@ const AppRoutes = () => {
     const location = useLocation();
     const isHome = location.pathname === "/";
 
+
     const routeTitles: Record<string, string> = {
         "/": "Home - Makmela",
         "/shop": "Shop - Makmela",
         "/contact": "Contact - Makmela",
         "/about": "About Us - Makmela",
-        "/beehappy": "BeeHappy - Makmela",
         "/checkout": "Checkout - Makmela",
         "/terms": "Terms - Makmela",
         "/privacy": "Privacy - Makmela",
@@ -60,7 +60,6 @@ const AppRoutes = () => {
                     document.title = `${formattedName} - Makmela`;
                 }
             }
-            // Static routes
             else {
                 document.title = routeTitles[path] || "Makmela";
             }
@@ -78,7 +77,6 @@ const AppRoutes = () => {
                     <Route path="/shop/:productName" element={<ItemDetails />} />
                     <Route path="/contact" element={<Contact/>} />
                     <Route path="/about" element={<AboutUs/>}/>
-                    <Route path="/beehappy" element={<div>BeeHappy Page Coming Soon</div>} />
                     <Route path="/checkout" element={<ProtectedCheckout />} />
                     <Route path="/order/:id" element={<Order />} />
                     <Route path="/terms" element={<Terms/>} />

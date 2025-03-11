@@ -8,11 +8,6 @@ const Footer = () => {
         <footer className={`absolute bottom-0 left-0 w-full text-sm py-4 z-20 ${isHome ? "text-white" : "text-gray-600"}`}>
             <hr className={`mb-4 md:mb-8 mx-[20px] ${isHome ? "border-white" : "border-black"}`} />
             <div className="container mx-auto flex flex-col items-center px-4 space-y-4">
-                {/* Center Section */}
-                <div className="text-center">
-                    <span className={`text-2xl md:text-3xl tracking-wider ${isHome ? "text-white" : "text-black"}`}>МАКМЕЛА</span>
-                </div>
-
                 {/* Left and Right Sections */}
                 <div className="w-full flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     {/* Left Section */}

@@ -1,6 +1,8 @@
 import HomeSlideShow from "./homeSlideShow.tsx";
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {Dialog, DialogPanel} from "@headlessui/react";
+import {CheckIcon} from "@heroicons/react/16/solid";
 
 const Home = () => {
     const location = useLocation();
@@ -25,20 +27,21 @@ const Home = () => {
 
     return (
         <>
-            <div className="relative">
-                <HomeSlideShow />
-{/*                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-                    <HomeLinks />
-                </div>*/}
+            <div className="relative w-full min-h-screen">
+                <HomeSlideShow/>
             </div>
-            {showSuccess && (
-                <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg flex items-center text-sm sm:text-base z-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {successMessage}
+            <Dialog
+                open={showSuccess}
+                onClose={() => setShowSuccess(false)}
+                className="relative z-50"
+            >
+                <div className="fixed inset-0 flex items-end justify-end p-4">
+                    <DialogPanel className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 transition-all">
+                        <CheckIcon className="h-5 w-5"/>
+                        <span className="text-sm">{successMessage}</span>
+                    </DialogPanel>
                 </div>
-            )}
+            </Dialog>
         </>
     );
 };

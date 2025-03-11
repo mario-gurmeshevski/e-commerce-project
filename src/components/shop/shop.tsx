@@ -8,18 +8,32 @@ const Shop = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const controller = new AbortController();
         const fetchProducts = async () => {
             try {
-                const { data } = await axios.get<Honey[]>("/api/honey");
+                const { data } = await axios.get<Honey[]>("/api/honey", {
+                    signal: controller.signal
+                });
                 setItems(data);
             } catch (error) {
-                console.error("Error fetching products:", error);
+                if (!axios.isCancel(error)) {
+                    console.error("Error fetching products:", error);
+                }
             } finally {
-                setLoading(false);
+                if (!controller.signal.aborted) {
+                    setLoading(false);
+                }
             }
         };
 
-        fetchProducts();
+        fetchProducts().catch((error) => {
+            if (!axios.isCancel(error)) {
+                console.error("Fetch error:", error);
+            }
+        });
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     if (loading) {
@@ -36,7 +50,7 @@ const Shop = () => {
                 Продавница
             </h1>
 
-            <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
                 {items.map((item) => (
                     <ShopItem key={item.id} item={item} />
                 ))}
