@@ -200,22 +200,41 @@ const ItemDetails: React.FC = () => {
                                     enterFrom="opacity-0"
                                     enterTo="opacity-100"
                                 >
-                                    <div className="space-y-6 text-gray-600">
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2">Консумирање</h3>
-                                            <p>Со цел да се задржат хранливите и здравствените својства BeeHappy® {item.name} се консумира 2-3 дрвени лажички дневно.</p>
-                                        </div>
+                                    {item.category === 'honey' ? (
+                                        <div className="space-y-6 text-gray-600">
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2">Консумирање</h3>
+                                                <p>Со цел да се задржат хранливите и здравствените својства BeeHappy® {item.name} се консумира 2-3 дрвени лажички дневно.</p>
+                                            </div>
 
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2">Рок на консумирање</h3>
-                                            <p>Препорачуваме да го консумирате во рок од 2 години по производството, со цел да се задржат сите оригинални состојки.</p>
-                                        </div>
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2">Рок на консумирање</h3>
+                                                <p>Препорачуваме да го консумирате во рок од 2 години по производството, со цел да се задржат сите оригинални состојки.</p>
+                                            </div>
 
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2">Чување</h3>
-                                            <p>Да се чува на темно и суво место.</p>
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2">Чување</h3>
+                                                <p>Да се чува на темно и суво место.</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    ) : item.category === 'pollen' ? (
+                                        <div className="space-y-6 text-gray-600">
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2">Консумирање</h3>
+                                                <p>Со цел да се задржат хранливите и здравствените својства BeeHappy® {item.name} се консумира 3 до 5 кафени лажички или 20-40г дневно.</p>
+                                            </div>
+
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2">Рок за консумирање</h3>
+                                                <p>Нашиот полен може да се чува бесконечно доколку се чува зво замрзната состојба! Препорачуваме да го консумирате во рок од 2 години по производството.</p>
+                                            </div>
+
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2">Начин на чување</h3>
+                                                <p>Да се чува на ладно, темно и суво место.</p>
+                                            </div>
+                                        </div>
+                                    ) : null}
                                 </Transition>
                             </TabPanel>
                         </TabPanels>

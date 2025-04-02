@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Honey } from "../../interfaces/honey";
 import ShopItem from "./shopItem";
+import Loader from "../common/Loader.tsx";
 
 const Shop = () => {
     const [items, setItems] = useState<Honey[]>([]);
@@ -37,11 +38,7 @@ const Shop = () => {
     }, []);
 
     if (loading) {
-        return (
-            <div className="flex justify-center items-center min-h-[50vh]">
-                <div className="text-center">Loading products...</div>
-            </div>
-        );
+        return <Loader />;
     }
 
     return (

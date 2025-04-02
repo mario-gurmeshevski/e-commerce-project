@@ -3,6 +3,7 @@ export interface Honey {
     name: string;
     price: number;
     stock: number;
+    category: string;
     weight: number;
     discount: number;
     flowers: string;

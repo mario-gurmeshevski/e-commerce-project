@@ -10,8 +10,8 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        configure: (proxy, options) => {
-          proxy.on('proxyRes', (proxyRes, req, res) => {
+        configure: (proxy, _options) => {
+          proxy.on('proxyRes', (proxyRes, _req, res) => {
             if (proxyRes.statusCode === 404) {
               res.writeHead(302, { Location: '/not-found' });
               res.end();

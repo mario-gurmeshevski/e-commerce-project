@@ -13,6 +13,9 @@ export default {
         'width': 'width'    
         },
       keyframes: {
+        spinSlow: {
+          to: { transform: 'rotate(360deg)' },
+        },
         fadeIn: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 }
@@ -30,7 +33,8 @@ export default {
       },
       animation: {
         'fade-in': 'fadeIn 1.5s ease-in-out forwards',
-        'pulse-scale': 'pulse-scale 0.5s cubic-bezier(0.4, 0, 0.6, 1)'
+        'pulse-scale': 'pulse-scale 0.5s cubic-bezier(0.4, 0, 0.6, 1)',
+        spinSlow: 'spinSlow 3s linear infinite',
       }
     }
   },
