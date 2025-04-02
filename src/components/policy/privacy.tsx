@@ -5,43 +5,40 @@ const Privacy = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
                 <header className="mb-10 text-center">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+                    <h1 className="text-3xl font-bold text-black mb-2 flex items-center justify-center">
                         Политика за приватност
                     </h1>
-                    <div className="flex items-center justify-center space-x-2 text-gray-500">
-                        <ClipboardIcon className="w-4 h-4 text-gray-500" />
+                    <div className="flex items-center justify-center space-x-2 text-gray-900">
+                        <ClipboardIcon className="w-4 h-4 "/>
                         <span>Во сила од Октомври 2021</span>
                     </div>                </header>
 
-                <div className="space-y-10 text-gray-700 leading-relaxed">
-                    {/* Вовед */}
+                <div className="space-y-10 leading-relaxed">
                     <div className="pb-8 border-b border-gray-100">
-                        <p className="text-lg text-gray-800">
+                        <p className="text-lg ">
                             Со Политиката на приватност, ќе ви појасниме каде и како се чуваат личните податоци на сите потрошувачи на нашата интернет страна.
                         </p>
                     </div>
 
-                    {/* Опсег */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold text-black mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Опсег на политиката
                         </h2>
-                        <p>Оваа политика на приватност се однесува само за <a href="https://makmela.com/" className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">www.makmela.com</a>.</p>
+                        <p className="">Оваа политика на приватност се однесува само за <a href="https://makmela.com/" className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">www.makmela.com</a>.</p>
                     </div>
 
-                    {/* Надворешни линкови */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold  mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Надворешни линкови
                         </h2>
-                        <p>Доколку е присутен линк кој ќе Ве поврзе со други страни, ние не превземаме никаква одговорност во однос на заштитата на личните податоци која ја обезбедуваат тие интернет страни.</p>
+                        <p className="">Доколку е присутен линк кој ќе Ве поврзе со други страни, ние не превземаме никаква одговорност во однос на заштитата на личните податоци која ја обезбедуваат тие интернет страни.</p>
                     </div>
 
                     {/* Согласност на корисникот */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold  mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Корисничко согласување
                         </h2>
@@ -56,7 +53,7 @@ const Privacy = () => {
 
                     {/* Собирање податоци */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Собранети информации
                         </h2>
@@ -73,7 +70,7 @@ const Privacy = () => {
 
                     {/* Користење податоци */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Ракување со податоци
                         </h2>
@@ -85,7 +82,7 @@ const Privacy = () => {
 
                     {/* Колачиња */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold  mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Користење на колачиња
                         </h2>
@@ -100,7 +97,7 @@ const Privacy = () => {
 
                     {/* Правни барања */}
                     <div className="pb-8 border-b border-gray-100">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold  mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Правни барања
                         </h2>
@@ -111,7 +108,7 @@ const Privacy = () => {
 
                     {/* Промени во политиката */}
                     <div className="pb-8">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <h2 className="text-xl font-semibold  mb-4 flex items-center">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                             Промени во политиката
                         </h2>

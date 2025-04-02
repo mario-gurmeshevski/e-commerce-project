@@ -19,7 +19,7 @@ const AboutUs = () => {
 
                     {/* Text Column */}
                     <div className="md:w-1/2 flex flex-col justify-center p-4 space-y-6">
-                        <h2 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-[#E15027] bg-clip-text text-transparent">
+                        <h2 className="text-3xl text-black font-bold">
                             НАШЕТО ПЧЕЛАРСТВО
                         </h2>
                         <div className="space-y-4 text-gray-700">
@@ -61,7 +61,7 @@ const AboutUs = () => {
 
                     {/* Text Column */}
                     <div className="md:w-1/2 flex flex-col justify-center p-4 space-y-6">
-                        <h2 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-[#E15027] bg-clip-text text-transparent">
+                        <h2 className="text-3xl text-black font-bold">
                             НИЕ И ПЧЕЛИТЕ
                         </h2>
 
@@ -106,7 +106,7 @@ const AboutUs = () => {
 
                     {/* Text Column */}
                     <div className="md:w-1/2 flex flex-col justify-center p-4 space-y-6">
-                        <h2 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-[#E15027] bg-clip-text text-transparent">
+                        <h2 className="text-3xl text-black-800 font-bold">
                             ПРИРОДА
                         </h2>
 

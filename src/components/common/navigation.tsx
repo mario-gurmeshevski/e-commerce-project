@@ -3,6 +3,9 @@ import {useCart} from "../cart/useCart.tsx";
 import { ShoppingCartIcon, Bars3BottomLeftIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {Popover, PopoverButton, PopoverPanel, Transition} from '@headlessui/react';
+import bee from '/Logo.png';
+
+
 
 
 const LeftNav = ({isMobile = false, closeMenu = () => {}}) => {
@@ -40,16 +43,16 @@ const LeftNav = ({isMobile = false, closeMenu = () => {}}) => {
 
 const CenterNav = () => {
     return (
-        <div className="flex justify-center">
-            <Link to="/" className="text-center text-lg">
-                <span className={"text-2xl md:text-3xl tracking-widest"}>МАКМЕЛА</span>
+            <Link to="/" className="text-center flex items-center">
+                <img src={bee} alt="bee" className="h-7 md:h-12 mr-2"/>                
+                <span className={"text-2xl md:text-4xl tracking-widest font-thin"}>МАКМЕЛА</span>
             </Link>
-        </div>
     );
 };
 
 const RightNav = () => {
     const { cartItems, getTotalItems, getTotalUniqueProducts, decreaseQuantity } = useCart();
+    const [subtotal, setSubtotal] = useState(Number);
     const [isFlashing, setIsFlashing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -71,8 +74,8 @@ const RightNav = () => {
             height: '100vh',
             borderRadius: 0,
             top: 0,
-            transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
-        },
+            transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+                },
         content: {
             padding: '1rem',
             overflowY: 'auto'
@@ -91,8 +94,8 @@ const RightNav = () => {
 
     useEffect(() => {
         if(location.pathname === '/checkout'){
-          setIsFlashing(false);
-          setIsOpen(false);
+            setIsFlashing(false);
+            setIsOpen(false);
         }
     }, [location.pathname]);
 
@@ -192,6 +195,10 @@ const RightNav = () => {
         return getSubtotal() + getShippingCost();
     };
 
+    useEffect(() => {
+        setSubtotal(getSubtotal());
+    }, [cartItems]);
+
     const getRemainingForFreeShipping = () => {
         const subtotal = getSubtotal();
         return Math.max(2000 - subtotal, 0);
@@ -223,9 +230,9 @@ const RightNav = () => {
                         aria-label="Cart"
                     >
                         <ShoppingCartIcon
-                            className={`h-6 w-6 ${isHome ? 'text-white' : 'text-gray-700'}`}
+                            className={`h-6 w-6 ${isHome ? 'text-white' : 'text-black'}`}
                         />
-                        <span className={`absolute -top-1 -right-1 bg-black text-white rounded-full px-2 py-0.5 text-xs font-medium
+                        <span className={`absolute -top-1 -right-1  bg-black text-white rounded-full px-2 py-0.5 text-xs font-medium
                                 ${isFlashing ? 'animate-pulse-scale' : ''}`}>
                                 {getTotalItems()}
                         </span>
@@ -245,7 +252,7 @@ const RightNav = () => {
                         ref={panelRef}
                         className={`fixed right-0 top-0 bg-white shadow-xl border border-gray-100 transition-all duration-300 z-50 ${
                             isMobile
-                                ? 'w-[62%] h-full'
+                                ? 'w-[62%] h-full z-50'
                                 : 'lg:w-80 lg:absolute lg:top-full lg:mt-2.5 lg:rounded-xl'
                         } ${
                             isOpen
@@ -257,20 +264,20 @@ const RightNav = () => {
                         static
                     >
                         <div className="p-4 space-y-4 h-full flex flex-col"
-                             onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             {/* Panel Header */}
                             {isMobile && (
                                 <button
                                     onClick={toggleSidebar}
-                                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                                    className="absolute top-4 right-4 text-black"
                                     aria-label="Close"
                                 >
                                     <XMarkIcon className="h-6 w-6" />
                                 </button>
                             )}
                             <div className="flex items-center justify-between pb-2 border-b border-gray-200">
-                                <h3 className="text-lg font-bold text-gray-900">
+                                <h3 className="text-lg font-bold text-black">
                                     Вашата кошничка ({getTotalUniqueProducts()})
                                 </h3>
                             </div>
@@ -296,7 +303,7 @@ const RightNav = () => {
 
                                                     {/* Product Info */}
                                                     <div className="flex-1">
-                                                        <h4 className="font-medium text-gray-900 line-clamp-1">
+                                                        <h4 className="font-medium text-black line-clamp-1">
                                                             {item.name}
                                                         </h4>
                                                         <div className="flex items-baseline gap-2 mt-1">
@@ -333,7 +340,9 @@ const RightNav = () => {
                                             <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
                                                 <div
                                                     className="absolute left-0 h-full bg-black transition-all duration-500"
-                                                    style={{ width: `${Math.min((getSubtotal() / 2000) * 100, 100)}%` }}
+                                                    style={{
+                                                        width: `${Math.min((subtotal / 2000) * 100, 100)}%`,
+                                                    }}
                                                 />
                                             </div>
                                             <p className="text-center text-xs text-gray-500">
@@ -442,7 +451,7 @@ const Navigation = () => {
                 </div>
 
                 {/* Center Section */}
-                <div className="flex-1 flex items-center justify-center px-4">
+                <div className="flex-1 flex items-center justify-center px-5 mx-5">
                     <CenterNav />
                 </div>
 
@@ -462,7 +471,7 @@ const Navigation = () => {
                     {/* Close Button */}
                     <button
                         onClick={closeMobileMenu}
-                        className="absolute top-4 left-4 text-gray-500 hover:text-gray-700"
+                        className="absolute top-4 left-4 text-black"
                         aria-label="Close"
                     >
                         <XMarkIcon className="h-6 w-6" />

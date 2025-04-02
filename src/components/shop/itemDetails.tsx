@@ -35,7 +35,7 @@ const ItemDetails: React.FC = () => {
     };
 
     if (!item) return (
-        <div className="text-center mt-10 text-xl font-medium text-gray-500">
+        <div className="flex items-center justify-center h-[70vh] text-xl font-medium">
             Продуктот не е пронајден
         </div>
     );

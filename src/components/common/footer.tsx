@@ -5,9 +5,9 @@ const Footer = () => {
     const isHome = location.pathname === "/";
 
     return (
-        <footer className={`absolute bottom-0 left-0 w-full text-sm py-4 z-20 ${isHome ? "text-white" : "text-gray-600"}`}>
+        <footer className={`absolute bottom-0 left-0 w-full text-sm py-4 z-0 ${isHome ? "text-white" : "text-gray-600"}`}>
             <hr className={`mb-4 md:mb-8 mx-[20px] ${isHome ? "border-white" : "border-black"}`} />
-            <div className="container mx-auto flex flex-col items-center px-4 space-y-4">
+            <div className=" px-4 md:px-8  flex flex-col items-center  space-y-4">
                 {/* Left and Right Sections */}
                 <div className="w-full flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     {/* Left Section */}

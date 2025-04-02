@@ -9,8 +9,9 @@ export default {
         roboto: ['Roboto', 'sans-serif']
       },
       transitionProperty: {
-        'visibility': 'visibility, transform, opacity'
-      },
+        'all': 'all',
+        'width': 'width'    
+        },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },
