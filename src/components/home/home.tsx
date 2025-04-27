@@ -1,49 +1,32 @@
 import HomeSlideShow from "./homeSlideShow.tsx";
-import {useLocation} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {Dialog, DialogPanel} from "@headlessui/react";
-import {CheckIcon} from "@heroicons/react/16/solid";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Toaster, toast } from "react-hot-toast";
 
 const Home = () => {
-    const location = useLocation();
-    const [showSuccess, setShowSuccess] = useState(false);
-    const [successMessage, setSuccessMessage] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const hasShownToast = useRef(false);
 
-    useEffect(() => {
-        if (location.state?.showCancelSuccess) {
-            setShowSuccess(true);
-            setSuccessMessage(location.state.message);
+  useEffect(() => {
+    if (location.state?.showCancelSuccess && !hasShownToast.current) {
+      toast.success(location.state.message || "Success!", {
+        duration: 3000,
+        position: "top-center",
+      });
+      hasShownToast.current = true;
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location.state, location.pathname, navigate]);
 
-            const timer = setTimeout(() => {
-                setShowSuccess(false);
-                setSuccessMessage('');
-
-            }, 3000);
-
-            return () => clearTimeout(timer);
-        }
-    }, [location.state]);
-
-
-    return (
-        <>
-            <div className="relative w-full min-h-screen">
-                <HomeSlideShow/>
-            </div>
-            <Dialog
-                open={showSuccess}
-                onClose={() => setShowSuccess(false)}
-                className="relative z-50"
-            >
-                <div className="fixed inset-0 flex items-end justify-end p-4">
-                    <DialogPanel className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 transition-all">
-                        <CheckIcon className="h-5 w-5"/>
-                        <span className="text-sm">{successMessage}</span>
-                    </DialogPanel>
-                </div>
-            </Dialog>
-        </>
-    );
+  return (
+    <>
+      <Toaster position="top-center" />
+      <div className="relative w-full min-h-screen">
+        <HomeSlideShow />
+      </div>
+    </>
+  );
 };
 
 export default Home;

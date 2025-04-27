@@ -102,6 +102,7 @@ export default function Checkout() {
                         id: item.id,
                         name: item.name,
                         quantity: item.quantity,
+                        image: item.image,
                         price: preciseRound(item.price * (1 - (item.discount || 0)/100)),
                         discount: item.discount || 0
                     })),
