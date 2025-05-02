@@ -28,6 +28,7 @@ export default function Checkout() {
 		useCart()
 	const navigate = useNavigate()
 	const preciseRound = (num: number) => Math.round(num)
+	const isMobile = window.innerWidth <= 768
 
 	const subtotal = cartItems.reduce((sum, item) => {
 		const discountFactor = 1 - (item.discount || 0) / 100
@@ -59,18 +60,14 @@ export default function Checkout() {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
 
-		// Clear existing error when user starts typing
 		if (formErrors[name]) {
 			setFormErrors((prev) => ({ ...prev, [name]: '' }))
 		}
 
-		// Restrict input to numbers only for postal code and phone number
 		if (name === 'postalCode' || name === 'phoneNumber') {
 			const numericValue = value.replace(/[^0-9]/g, '')
 
-			// For phone number specifically
 			if (name === 'phoneNumber') {
-				// Check for country code attempt
 				if (value.includes('+')) {
 					setFormErrors((prev) => ({
 						...prev,
@@ -79,7 +76,6 @@ export default function Checkout() {
 					return
 				}
 
-				// Enforce maximum length of 9 characters
 				if (numericValue.length > 9) return
 			}
 
@@ -101,7 +97,18 @@ export default function Checkout() {
 
 		setLoading(true)
 
-		const toastId = toast.loading('Вашата нарачка се процесира...')
+		const toastId = toast.loading('Вашата нарачка се процесира...', {
+			style: isMobile
+				? {
+						position: 'sticky',
+						bottom: 0,
+						left: 0,
+						right: 0,
+						margin: 'auto',
+						width: 'fit-content',
+				  }
+				: {},
+		})
 
 		try {
 			const orderData = {
@@ -129,6 +136,16 @@ export default function Checkout() {
 				toast.success('Нарачката е успешно пратена!', {
 					id: toastId,
 					duration: 1000,
+					style: isMobile
+						? {
+								position: 'sticky',
+								bottom: 0,
+								left: 0,
+								right: 0,
+								margin: 'auto',
+								width: 'fit-content',
+						  }
+						: {},
 				})
 				navigate('/')
 				clearCart()
@@ -136,11 +153,21 @@ export default function Checkout() {
 
 			await orderPromise
 		} catch (err) {
-			console.error(err)
+			//console.error(err)
 			toast.error(
 				'Настана грешка при праќањето на нарачката. Обидете се повторно.',
 				{
 					id: toastId,
+					style: isMobile
+						? {
+								position: 'sticky',
+								bottom: 0,
+								left: 0,
+								right: 0,
+								margin: 'auto',
+								width: 'fit-content',
+						  }
+						: {},
 				}
 			)
 		} finally {

@@ -67,6 +67,10 @@ const AppRoutes = () => {
 	}
 	useDynamicTitle()
 
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [location.pathname])
+
 	return (
 		<div className="relative min-h-screen">
 			<Navigation />

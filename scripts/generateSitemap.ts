@@ -33,7 +33,6 @@ ${routes
 
 	const outputPath = path.resolve(__dirname, '../public/sitemap.xml')
 	fs.writeFileSync(outputPath, sitemap, 'utf8')
-	console.log('Sitemap generated at:', outputPath)
 }
 
 generateSitemap()

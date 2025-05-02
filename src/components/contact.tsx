@@ -35,6 +35,8 @@ const Contact = () => {
 
 	const [formErrors, setFormErrors] = useState<Record<string, string>>({})
 
+	const isMobile = window.innerWidth <= 768
+
 	const validateForm = () => {
 		const errors: Record<string, string> = {}
 		const phoneRegex = /^07\d{7}$/
@@ -160,6 +162,16 @@ const Contact = () => {
 			},
 			{
 				position: 'top-center',
+				style: isMobile
+					? {
+							position: 'sticky',
+							bottom: 0,
+							left: 0,
+							right: 0,
+							margin: 'auto',
+							width: 'fit-content',
+					  }
+					: {},
 			}
 		)
 

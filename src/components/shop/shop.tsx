@@ -18,7 +18,7 @@ const Shop = () => {
 				setItems(data)
 			} catch (error) {
 				if (!axios.isCancel(error)) {
-					console.error('Error fetching products:', error)
+					//console.error('Error fetching products:', error)
 				}
 			} finally {
 				if (!controller.signal.aborted) {
@@ -29,7 +29,7 @@ const Shop = () => {
 
 		fetchProducts().catch((error) => {
 			if (!axios.isCancel(error)) {
-				console.error('Fetch error:', error)
+				//console.error('Fetch error:', error)
 			}
 		})
 		return () => {

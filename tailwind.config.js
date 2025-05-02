@@ -27,11 +27,21 @@ export default {
 						boxShadow: '0 0 15px rgba(0,0,0,0.1)',
 					},
 				},
+				'slide-in': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' },
+				},
+				'overlay-fade': {
+					'0%': { opacity: 0 },
+					'100%': { opacity: 0.3 },
+				},
 			},
 			animation: {
 				'fade-in': 'fadeIn 1.5s ease-in-out forwards',
 				'pulse-scale': 'pulse-scale 0.5s cubic-bezier(0.4, 0, 0.6, 1)',
 				spinSlow: 'spinSlow 3s linear infinite',
+				'sidebar-enter': 'slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+				'overlay-enter': 'overlay-fade 0.2s ease-out',
 			},
 		},
 	},

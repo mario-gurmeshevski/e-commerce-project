@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import { useCart } from '../cart/useCart.tsx'
 import { Honey } from '../../interfaces/honey'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/outline'
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { formatProductSlug } from '../../common/formatting'
 import { Transition } from '@headlessui/react'
@@ -120,7 +120,7 @@ const ItemDetails: React.FC = () => {
 								className="p-3 hover:bg-gray-50 transition-colors disabled:opacity-30"
 								disabled={quantity <= 1}
 							>
-								<ChevronLeftIcon className="w-6 h-6" />
+								<MinusIcon className="w-6 h-6" />
 							</button>
 							<div className="w-16 text-center text-xl font-medium">{quantity}</div>
 							<button
@@ -128,7 +128,7 @@ const ItemDetails: React.FC = () => {
 								className="p-3 hover:bg-gray-50 transition-colors disabled:opacity-30"
 								disabled={item.stock <= quantity}
 							>
-								<ChevronRightIcon className="w-6 h-6" />
+								<PlusIcon className="w-6 h-6" />
 							</button>
 						</div>
 
