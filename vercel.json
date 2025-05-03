@@ -1,0 +1,12 @@
+{
+	"rewrites": [
+		{
+			"source": "/api/(.*)",
+			"destination": "https://makmela-api-production.up.railway.app/api/$1"
+		},
+		{
+			"source": "/uploads/(.*)",
+			"destination": "https://makmela-api-production.up.railway.app/uploads/$1"
+		}
+	]
+}
