@@ -105,10 +105,16 @@ const LeftNav = ({ isMobile = false, closeMenu = () => {} }) => {
 			{isMobile && (
 				<div className="mt-auto pt-6 border-t border-gray-700">
 					<div className="flex space-x-4">
-						<a href="#" className="p-2 rounded-full transition-colors">
+						<a
+							href="https://www.facebook.com/makmela.apiculture"
+							className="p-2 rounded-full transition-colors"
+						>
 							<FacebookIcon />
 						</a>
-						<a href="#" className="p-2 rounded-full transition-colors">
+						<a
+							href="https://www.instagram.com/makmela.apiculture/"
+							className="p-2 rounded-full transition-colors"
+						>
 							<InstagramIcon />
 						</a>
 					</div>
