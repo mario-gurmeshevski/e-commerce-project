@@ -8,7 +8,7 @@ export default defineConfig({
 		port: 5173,
 		proxy: {
 			'/api': {
-				target: 'http://localhost:3000',
+				target: 'makmela-api-production.up.railway.app',
 				changeOrigin: true,
 				configure: (proxy, _options) => {
 					proxy.on('proxyRes', (proxyRes, _req, res) => {
@@ -20,7 +20,7 @@ export default defineConfig({
 				},
 			},
 			'/uploads': {
-				target: 'http://localhost:3000',
+				target: 'makmela-api-production.up.railway.app',
 				changeOrigin: true,
 			},
 		},
