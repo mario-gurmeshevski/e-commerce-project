@@ -25,6 +25,7 @@ const CATEGORY_LABELS: Record<CategoryEnum | 'all', string> = {
 
 const SORT_OPTIONS = [
 	{ value: 'name_asc', label: 'Име (A-Ш)' },
+	{ value: 'name_desc', label: 'Име (Ш-А)' },
 	{ value: 'price_asc', label: 'Цена (најниска)' },
 	{ value: 'price_desc', label: 'Цена (највисока)' },
 ]
@@ -48,9 +49,12 @@ const Shop = () => {
 				} else if (sort === 'price_desc') {
 					params.sortBy = 'price'
 					params.order = 'desc'
-				} else {
+				} else if (sort === 'name_asc') {
 					params.sortBy = 'name'
 					params.order = 'asc'
+				} else if (sort === 'name_desc') {
+					params.sortBy = 'name'
+					params.order = 'desc'
 				}
 				const { data } = await axios.get<Honey[]>('/api/honey', {
 					params,
