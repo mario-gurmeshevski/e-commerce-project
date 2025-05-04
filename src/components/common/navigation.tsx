@@ -557,25 +557,29 @@ const Navigation = () => {
 
 				{/* Right Section */}
 				<div className="flex-1 flex items-center justify-between px-4">
-					<div className="flex space-x-8">
-						<a
-							href="https://www.facebook.com/makmela.apiculture"
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Facebook"
-						>
-							<FacebookIcon isHome={isHome} />
-						</a>
-						<a
-							href="https://www.instagram.com/makmela.apiculture/"
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Instagram"
-						>
-							<InstagramIcon isHome={isHome} />
-						</a>
+					{windowWidth > 1260 && (
+						<div className="flex space-x-8">
+							<a
+								href="https://www.facebook.com/makmela.apiculture"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Facebook"
+							>
+								<FacebookIcon isHome={isHome} />
+							</a>
+							<a
+								href="https://www.instagram.com/makmela.apiculture/"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Instagram"
+							>
+								<InstagramIcon isHome={isHome} />
+							</a>
+						</div>
+					)}
+					<div className="ml-auto">
+						<RightNav />
 					</div>
-					<RightNav />
 				</div>
 			</nav>
 

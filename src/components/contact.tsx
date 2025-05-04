@@ -165,10 +165,9 @@ const Contact = () => {
 				</h1>
 			</div>
 
-			{/* Main Grid: Form Left, Image Right, Info Blocks Below Each */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10 min-h-[500px] items-stretch">
-				{/* Contact Form (Left) */}
-				<div className="flex flex-col items-center justify-center h-full">
+				{/* Form */}
+				<div className="order-1 lg:order-1 flex flex-col items-center justify-center h-full">
 					<form
 						onSubmit={handleSubmit}
 						className="w-full max-w-md space-y-6 bg-white p-6 rounded-lg shadow-md flex-1 flex flex-col justify-center h-full"
@@ -275,22 +274,9 @@ const Contact = () => {
 							</button>
 						</div>
 					</form>
-					<div className="space-y-3 text-center px-4 py-6 min-w-[250px] w-full max-w-md">
-						<hr className="w-12 border-t-2 border-black mx-auto " />
-						<p className="text-3xl md:text-4xl font-bold">Адреса</p>
-						<a
-							href="mailto:info@makmela.com"
-							className="text-xl block hover:underline"
-						>
-							info@makmela.com
-						</a>
-						<a href="tel:+38970400344" className="text-xl block hover:underline">
-							T: +389 70 400 344
-						</a>
-					</div>
 				</div>
-				{/* Image (Right) */}
-				<div className="flex flex-col items-center h-full">
+				{/* Image */}
+				<div className="order-2 lg:order-2 flex flex-col items-center h-full">
 					<div className="max-w-md w-full relative overflow-hidden rounded-lg group flex-1 flex h-full">
 						<img
 							src={Image1}
@@ -299,12 +285,27 @@ const Contact = () => {
 						/>
 						<div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/10" />
 					</div>
-					<div className="space-y-3 text-center px-4 py-6 min-w-[250px] w-full max-w-md">
-						<hr className="w-12 border-t-2 border-black mx-auto " />
-						<p className="text-3xl md:text-4xl font-bold">Фарма</p>
-						<p className="text-xl">R1107, Старо Лагово, Прилеп,</p>
-						<p className="text-xl">Северна Македонија, 7500</p>
-					</div>
+				</div>
+				{/* Адреса */}
+				<div className="order-3 lg:order-3 space-y-3 text-center px-4 py-6 min-w-[250px] w-full max-w-md mx-auto">
+					<hr className="w-12 border-t-2 border-black mx-auto " />
+					<p className="text-3xl md:text-4xl font-bold">Адреса</p>
+					<a
+						href="mailto:info@makmela.com"
+						className="text-xl block hover:underline"
+					>
+						info@makmela.com
+					</a>
+					<a href="tel:+38970400344" className="text-xl block hover:underline">
+						T: +389 70 400 344
+					</a>
+				</div>
+				{/* Фарма */}
+				<div className="order-4 lg:order-4 space-y-3 text-center px-4 py-6 min-w-[250px] w-full max-w-md mx-auto">
+					<hr className="w-12 border-t-2 border-black mx-auto " />
+					<p className="text-3xl md:text-4xl font-bold">Фарма</p>
+					<p className="text-xl">R1107, Старо Лагово, Прилеп,</p>
+					<p className="text-xl">Северна Македонија, 7500</p>
 				</div>
 			</div>
 

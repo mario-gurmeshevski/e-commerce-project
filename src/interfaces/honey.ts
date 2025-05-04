@@ -15,3 +15,11 @@ export interface Honey {
 	consume_date: string
 	image: string
 }
+
+export enum CategoryEnum {
+	HONEY = 'honey',
+	HONEYCOMB = 'honeycomb',
+	POLLEN = 'pollen',
+	ROYAL_JELLY = 'royal_jelly',
+	PROPOLIS_SPRAY = 'propolis_spray',
+}
