@@ -6,7 +6,7 @@ import {
 	XMarkIcon,
 	InformationCircleIcon,
 	EnvelopeIcon,
-} from '@heroicons/react/24/solid'
+} from '@heroicons/react/24/outline'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
 	Popover,
@@ -16,9 +16,9 @@ import {
 } from '@headlessui/react'
 import bee from '/Logo.png'
 
-const FacebookIcon = () => (
+const FacebookIcon = ({ isHome }: { isHome: boolean }) => (
 	<svg
-		className="h-7 w-7 text-white fill-current"
+		className={`h-7 w-7 ${isHome ? 'text-white' : 'text-black'} fill-current`}
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 50 50"
 	>
@@ -26,9 +26,9 @@ const FacebookIcon = () => (
 	</svg>
 )
 
-const InstagramIcon = () => (
+const InstagramIcon = ({ isHome }: { isHome: boolean }) => (
 	<svg
-		className="h-7 w-7 text-white fill-current"
+		className={`h-7 w-7 ${isHome ? 'text-white' : 'text-black'} fill-current`}
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 50 50"
 	>
@@ -109,13 +109,13 @@ const LeftNav = ({ isMobile = false, closeMenu = () => {} }) => {
 							href="https://www.facebook.com/makmela.apiculture"
 							className="p-2 rounded-full transition-colors"
 						>
-							<FacebookIcon />
+							<FacebookIcon isHome={true} />
 						</a>
 						<a
 							href="https://www.instagram.com/makmela.apiculture/"
 							className="p-2 rounded-full transition-colors"
 						>
-							<InstagramIcon />
+							<InstagramIcon isHome={true} />
 						</a>
 					</div>
 				</div>
@@ -317,7 +317,7 @@ const RightNav = () => {
 						aria-label="Cart"
 					>
 						<ShoppingCartIcon
-							className={`h-6 w-6 ${isHome ? 'text-white' : 'text-black'}`}
+							className={`h-7 w-7 ${isHome ? 'text-white' : 'text-black'}`}
 						/>
 						<span
 							className={`absolute -top-1 -right-1  bg-black text-white rounded-full px-2 py-0.5 text-xs font-medium
@@ -375,7 +375,7 @@ const RightNav = () => {
 								{/* Empty State */}
 								{cartItems.length === 0 ? (
 									<div className="py-6 text-center">
-										<p className="text-gray-400">Корпата е празна</p>
+										<p className="text-gray-400">Кошничката е празна</p>
 									</div>
 								) : (
 									<>
@@ -556,7 +556,25 @@ const Navigation = () => {
 				</div>
 
 				{/* Right Section */}
-				<div className="flex-1 flex items-center justify-end px-4">
+				<div className="flex-1 flex items-center justify-between px-4">
+					<div className="flex space-x-8">
+						<a
+							href="https://www.facebook.com/makmela.apiculture"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Facebook"
+						>
+							<FacebookIcon isHome={isHome} />
+						</a>
+						<a
+							href="https://www.instagram.com/makmela.apiculture/"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Instagram"
+						>
+							<InstagramIcon isHome={isHome} />
+						</a>
+					</div>
 					<RightNav />
 				</div>
 			</nav>

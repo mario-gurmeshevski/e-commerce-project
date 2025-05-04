@@ -153,7 +153,7 @@ export default function Checkout() {
 
 			await orderPromise
 		} catch (err) {
-			//console.error(err)
+			// console.error(err)
 			toast.error(
 				'Настана грешка при праќањето на нарачката. Обидете се повторно.',
 				{

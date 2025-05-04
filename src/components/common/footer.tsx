@@ -17,7 +17,7 @@ const Footer = () => {
 					{/* Left Section */}
 					<div className="flex flex-col items-center md:items-start space-y-1 text-center md:text-left">
 						<p className="text-xs sm:text-sm">
-							Проверете ги нашите{' '}
+							Проверете ги нашите
 							<Link
 								to="/terms"
 								className={`hover:text-gray-300 ${
@@ -25,8 +25,8 @@ const Footer = () => {
 								}`}
 							>
 								Услови и Правила
-							</Link>{' '}
-							и нашата{' '}
+							</Link>
+							и нашата
 						</p>
 						<Link
 							to="/privacy"

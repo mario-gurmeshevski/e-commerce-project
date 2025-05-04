@@ -4,8 +4,11 @@ import Nature from '../images/aboutUs/Nature2.jpg'
 
 const AboutUs = () => {
 	return (
-		<div className="py-16">
+		<div className="pt-10 pb-16">
 			{/* Section 1 */}
+			<h1 className="text-3xl font-semibold sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center mb-10">
+				За нас
+			</h1>
 			<div className="max-w-7xl mx-auto px-4 mb-20">
 				<div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row items-stretch gap-8 p-8">
 					{/* Image Column */}
@@ -27,7 +30,7 @@ const AboutUs = () => {
 								менува.
 							</p>
 
-							<div className="border-l-4 border-amber-200 pl-4">
+							<div className="border-l-2 border-black pl-4">
 								<p>
 									Нашата мисија е преку употреба на најнови современи технологии и
 									техники во пчеларството, да добиеме високо квалитетни производи
@@ -68,13 +71,13 @@ const AboutUs = () => {
 							<p>Во МАКМЕЛА сме страствени заљубеници во пчелите и нивните креации.</p>
 
 							<div className="grid gap-4 sm:grid-cols-2">
-								<div className="border-l-4 border-amber-200 pl-4">
+								<div className="border-l-2 border-black pl-4">
 									<p>
 										Вредно работиме да произведеме суров мед кој е нефилтриран,
 										непастеризиран и неподложен на термички третмани!
 									</p>
 								</div>
-								<div className="border-l-4 border-amber-200 pl-4">
+								<div className="border-l-2 border-black pl-4">
 									<p>
 										Нашиот мед ги задржува сите нутритивни својства и придобивки од чист
 										еколошки мед произведен од домашни пчели (apis mellifera).
@@ -82,7 +85,7 @@ const AboutUs = () => {
 								</div>
 							</div>
 
-							<div className="border-t-2 border-amber-100 pt-3">
+							<div className="pt-3">
 								<p>
 									Нашата мисија е пчеларство со обработка на високо квалитетни производи
 									на пазарот, доверба и постигнување ефикасност преку употреба на најнови
@@ -111,7 +114,7 @@ const AboutUs = () => {
 						<h2 className="text-3xl text-black-800 font-bold">ПРИРОДА</h2>
 
 						<div className="space-y-4 text-gray-700">
-							<p className="border-l-4 border-amber-200 pl-4">
+							<p className="border-l-2 border-black pl-4">
 								Мариово е едно од најлегендарните, мистериозните восхитувачки места во
 								Македонија.
 							</p>
@@ -130,13 +133,13 @@ const AboutUs = () => {
 								</div>
 
 								<div className="grid gap-4 sm:grid-cols-2">
-									<div className="border-l-4 border-amber-200 pl-4">
+									<div className="border-l-2 border-black pl-4">
 										<p>
 											Мариово е област на 900 метри надморска височина опкружена со високи
 											планини, со ритчиња, кратки планини, реки и рамнини.
 										</p>
 									</div>
-									<div className="border-l-4 border-amber-200 pl-4">
+									<div className="border-l-2 border-black pl-4">
 										<p>
 											Планините Дрен и Селешка го штитат Мариово од континенталниот северен
 											ветер. На југо-исток сливот на реката Црна овозможува влијанија на

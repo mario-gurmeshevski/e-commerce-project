@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
-import honeyImage1 from '../../images/slideShow/image1.jpg'
-import honeyImage2 from '../../images/slideShow/image2.jpg'
-import honeyImage3 from '../../images/slideShow/image3.jpg'
-import honeyImage4 from '../../images/slideShow/image4.jpg'
+import honeyImage1 from '../../images/slideShow/premium_honey_with_black_background_and_cinemon.jpg'
+import honeyImage2 from '../../images/slideShow/honey_with_a_grey_background.jpg'
+import honeyImage3 from '../../images/slideShow/bees_on_a_comb.jpg'
+import honeyImage4 from '../../images/slideShow/honey_comb_holding.jpg'
+import honeyImage5 from '../../images/slideShow/makmela_brand_close_up.jpg'
 
 const HomeSlideShow = () => {
 	const [currentIndex, setCurrentIndex] = useState(0)
-	const images = [honeyImage1, honeyImage2, honeyImage4, honeyImage3]
+	const images = [
+		honeyImage5,
+		honeyImage2,
+		honeyImage1,
+		honeyImage3,
+		honeyImage4,
+	]
 
 	useEffect(() => {
 		const interval = setInterval(() => {

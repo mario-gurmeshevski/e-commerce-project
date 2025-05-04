@@ -42,8 +42,8 @@ const Shop = () => {
 	}
 
 	return (
-		<main className="container mx-auto px-4 py-8 md:py-12">
-			<h1 className="pb-5 text-3xl sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center">
+		<main className="container mx-auto px-4 py-8 md:pb-12 md:pt-10">
+			<h1 className="text-3xl font-semibold sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center mb-10">
 				Продавница
 			</h1>
 

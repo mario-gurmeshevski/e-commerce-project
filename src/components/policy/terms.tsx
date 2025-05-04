@@ -18,7 +18,7 @@ const Terms = () => {
 					{/* Рок на испорака */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold  mb-6 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 							Рок на испорака
 						</h3>
 						<div className="space-y-4 leading-relaxed">
@@ -42,7 +42,7 @@ const Terms = () => {
 					{/* Преземање на нарачката */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold  mb-6 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 							Преземање на нарачката
 						</h3>
 						<div className="space-y-4 leading-relaxed">
@@ -68,7 +68,7 @@ const Terms = () => {
 					{/* Цена на испорака */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 							Цена на испорака
 						</h3>
 						<div className="space-y-4 leading-relaxed">
@@ -88,7 +88,7 @@ const Terms = () => {
 					{/* Прием на производите */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 							Прием на производите
 						</h3>
 						<div className="space-y-4 leading-relaxed">
@@ -111,7 +111,7 @@ const Terms = () => {
 					{/* Враќање и замена */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 							Враќање и замена
 						</h3>
 						<div className="space-y-4 leading-relaxed">
@@ -132,7 +132,7 @@ const Terms = () => {
 					{/* Останати информации */}
 					<div className="py-8">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 							Останати информации за испорака
 						</h3>
 						<div className="space-y-4 leading-relaxed">

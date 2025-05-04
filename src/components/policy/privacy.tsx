@@ -4,59 +4,69 @@ const Privacy = () => {
 	return (
 		<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 			<div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
-				<header className="mb-10 text-center">
-					<h1 className="text-3xl font-bold text-black mb-2 flex items-center justify-center">
-						Политика за приватност
-					</h1>
-					<div className="flex items-center justify-center space-x-2 text-gray-900">
-						<ClipboardIcon className="w-4 h-4 " />
-						<span>Во сила од Октомври 2021</span>
-					</div>{' '}
+				<header className="mb-10">
+					<div className="flex flex-col items-center justify-center">
+						<h1 className="text-3xl font-bold text-black mb-2 text-center">
+							Политика за приватност
+						</h1>
+						<div className="flex items-center space-x-2 text-gray-900">
+							<ClipboardIcon className="w-5 h-5" />
+							<span className="text-base">Во сила од Октомври 2021</span>
+						</div>
+					</div>
 				</header>
 
 				<div className="space-y-10 leading-relaxed">
 					<div className="pb-8 border-b border-gray-100">
-						<p className="text-lg ">
+						<p className="text-lg">
 							Со Политиката на приватност, ќе ви појасниме каде и како се чуваат
 							личните податоци на сите потрошувачи на нашата интернет страна.
 						</p>
 					</div>
 
-					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold text-black mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-							Опсег на политиката
-						</h2>
-						<p className="">
-							Оваа политика на приватност се однесува само за{' '}
-							<a
-								href="https://makmela.com/"
-								className="text-blue-600 hover:text-blue-800 underline font-medium"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								www.makmela.com
-							</a>
-							.
-						</p>
-					</div>
+					{/** Section Template */}
+					{[
+						{
+							title: 'Опсег на политиката',
+							content: (
+								<p>
+									Оваа политика на приватност се однесува само за
+									<a
+										href="https://makmela.com/"
+										className="text-blue-600 hover:text-blue-800 underline font-medium"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										www.makmela.com
+									</a>
+									.
+								</p>
+							),
+						},
+						{
+							title: 'Надворешни линкови',
+							content: (
+								<p>
+									Доколку е присутен линк кој ќе Ве поврзе со други страни, ние не
+									превземаме никаква одговорност во однос на заштитата на личните
+									податоци која ја обезбедуваат тие интернет страни.
+								</p>
+							),
+						},
+					].map(({ title, content }, _idx) => (
+						<div key={title} className="pb-8 border-b border-gray-100">
+							<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+								<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
+								{title}
+							</h2>
+							{content}
+						</div>
+					))}
 
+					{/* Корисничко согласување */}
 					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold  mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-							Надворешни линкови
-						</h2>
-						<p className="">
-							Доколку е присутен линк кој ќе Ве поврзе со други страни, ние не
-							превземаме никаква одговорност во однос на заштитата на личните податоци
-							која ја обезбедуваат тие интернет страни.
-						</p>
-					</div>
-
-					{/* Согласност на корисникот */}
-					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold  mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+						<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+							<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
 							Корисничко согласување
 						</h2>
 						<div className="space-y-4">
@@ -79,13 +89,13 @@ const Privacy = () => {
 
 					{/* Собирање податоци */}
 					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-							Собранети информации
+						<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+							<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
+							Собрани информации
 						</h2>
 						<div className="bg-gray-50 p-6 rounded-xl">
 							<p>Информациите кои нам ни се потребни се:</p>
-							<ul className="list-disc pl-6 mt-3 space-y-2 marker:text-blue-500">
+							<ul className="list-disc pl-6 mt-3 space-y-2 marker:text-black">
 								<li>Име и презиме,</li>
 								<li>E-mail адреса,</li>
 								<li>Адреса на доставување на нарачката и</li>
@@ -96,8 +106,8 @@ const Privacy = () => {
 
 					{/* Користење податоци */}
 					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+						<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+							<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
 							Ракување со податоци
 						</h2>
 						<p>
@@ -106,7 +116,7 @@ const Privacy = () => {
 							се чуваат согласно одредбите од Законот за заштита на лични податоци и не
 							се отстапуваат на трети страни.
 						</p>
-						<div className="mt-4 p-4 rounded-lg">
+						<div className="mt-4 rounded-lg">
 							<p>
 								Податоците кои ги собираме и се чуваат кај нас, нема да се објавуваат,
 								продаваат или доставуваат на трета страна освен на надлежните органи на
@@ -117,11 +127,11 @@ const Privacy = () => {
 
 					{/* Колачиња */}
 					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold  mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+						<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+							<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
 							Користење на колачиња
 						</h2>
-						<div className="space-y-4 bg-yellow-50 p-6 rounded-xl border border-yellow-100">
+						<div className="space-y-4 rounded-xl">
 							<p>
 								Нашата Веб страница може да користи колачиња („Cookies“) за да се
 								подобри корисничкото искуство.
@@ -149,11 +159,11 @@ const Privacy = () => {
 
 					{/* Правни барања */}
 					<div className="pb-8 border-b border-gray-100">
-						<h2 className="text-xl font-semibold  mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+						<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+							<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
 							Правни барања
 						</h2>
-						<div className=" p-4 rounded-lg ">
+						<div className="p-4 rounded-lg">
 							<p>
 								<span className="font-semibold">BeeHappy-Makmela</span> го задржува
 								правото да ги користи IP aдресите и другите податоци на корисниците за
@@ -165,8 +175,8 @@ const Privacy = () => {
 
 					{/* Промени во политиката */}
 					<div className="pb-8">
-						<h2 className="text-xl font-semibold  mb-4 flex items-center">
-							<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+						<h2 className="flex items-center text-xl font-semibold text-black mb-4">
+							<span className="inline-block w-2 h-2 bg-black rounded-full mr-3"></span>
 							Промени во политиката
 						</h2>
 						<div className="p-6 rounded-xl">
@@ -175,7 +185,7 @@ const Privacy = () => {
 							</p>
 							<p className="mt-2">
 								Промените во политиката на приватност ќе бидат јавно објавени на
-								интернет страната{' '}
+								интернет страната
 								<a
 									href="https://makmela.com/"
 									className="text-blue-600 hover:text-blue-800 underline font-medium"
@@ -183,7 +193,7 @@ const Privacy = () => {
 									rel="noopener noreferrer"
 								>
 									www.makmela.com
-								</a>{' '}
+								</a>
 								најмалку 10 дена пред да стапат во сила.
 							</p>
 						</div>
