@@ -17,8 +17,8 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
 const CATEGORY_LABELS: Record<CategoryEnum | 'all', string> = {
 	all: 'Сите',
 	[CategoryEnum.HONEY]: 'Мед',
-	[CategoryEnum.HONEYCOMB]: 'Саќе',
 	[CategoryEnum.POLLEN]: 'Полен',
+	[CategoryEnum.HONEYCOMB]: 'Саќе',
 	[CategoryEnum.ROYAL_JELLY]: 'Матичен Млеч',
 	[CategoryEnum.PROPOLIS_SPRAY]: 'Прополис Спреј',
 }
