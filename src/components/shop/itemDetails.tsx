@@ -5,50 +5,85 @@ import { Honey } from '../../interfaces/honey'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
-import { formatProductSlug } from '../../common/formatting'
+import { formatSlug } from '../../common/formatting'
 import { Transition } from '@headlessui/react'
+import axios from 'axios'
+import Loader from '../common/Loader.tsx'
 
 const ItemDetails: React.FC = () => {
 	const { addToCart } = useCart()
 	const location = useLocation()
 	const { productName } = useParams<{ productName: string }>()
-
+	const storageKey = `currentItem:${productName}`
 	const [item, setItem] = useState<Honey | null>(() => {
 		const stateItem = location.state?.item
 		if (stateItem) return stateItem
-		const storedItem = sessionStorage.getItem('currentItem')
+		const storedItem = sessionStorage.getItem(storageKey)
 		return storedItem ? JSON.parse(storedItem) : null
 	})
 
 	const [quantity, setQuantity] = useState(1)
 	const [selectedTab, setSelectedTab] = useState(0)
+	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
-		if (item && productName !== formatProductSlug(item.name)) {
-			sessionStorage.removeItem('currentItem')
-			setItem(null)
+		if (item && item.name) {
+			document.title = `${item.name} - Makmela`
 		}
-	}, [productName, item])
+	}, [item])
+
+	useEffect(() => {
+		const storageKey = `currentItem:${productName}`
+		const storedItem = sessionStorage.getItem(storageKey)
+		let parsedItem = storedItem ? JSON.parse(storedItem) : null
+		if (parsedItem && parsedItem.name) {
+			setItem(parsedItem)
+			return
+		}
+		if (productName) {
+			setLoading(true)
+			setError(null)
+			axios
+				.get(`/api/honey/name/${productName}`)
+				.then((res) => {
+					setItem(res.data)
+					sessionStorage.setItem(storageKey, JSON.stringify(res.data))
+				})
+				.catch(() => setError('Продуктот не е пронајден'))
+				.finally(() => setLoading(false))
+		}
+	}, [productName])
 
 	const handleQuantityChange = (type: 'increment' | 'decrement') => {
 		setQuantity((prev) => Math.max(1, type === 'increment' ? prev + 1 : prev - 1))
 	}
 
-	if (!item)
+	if (loading) return <Loader />
+
+	if (error)
+		return (
+			<div className="flex items-center justify-center h-[70vh] text-xl font-medium text-red-500">
+				{error}
+			</div>
+		)
+
+	if (!item || !item.name) {
 		return (
 			<div className="flex items-center justify-center h-[70vh] text-xl font-medium">
 				Продуктот не е пронајден
 			</div>
 		)
+	}
 
-	const expectedSlug = formatProductSlug(item.name)
-	if (productName !== expectedSlug)
+	const expectedSlug = formatSlug(item.name)
+	if (productName !== expectedSlug) {
 		return (
 			<div className="text-center mt-10 text-xl font-medium text-red-500">
 				Невалиден URL за производот
 			</div>
 		)
-
+	}
 	return (
 		<div className="container mx-auto px-4 sm:px-6 py-8 md:py-12">
 			{/* Product Main Section */}

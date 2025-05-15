@@ -157,7 +157,7 @@ const Contact = () => {
 	}
 
 	return (
-		<div className="pt-10 pb-10 px-4 sm:px-6 lg:px-8">
+		<div className="pt-10 pb-10 px-4 sm:px-6 lg:px-8 animate-fade-in">
 			{/* Heading */}
 			<div className="text-center mb-10">
 				<h1 className="text-3xl font-semibold sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center mb-10">

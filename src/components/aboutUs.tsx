@@ -4,7 +4,7 @@ import Nature from '../images/aboutUs/Nature2.jpg'
 
 const AboutUs = () => {
 	return (
-		<div className="pt-10 pb-16">
+		<div className="pt-10 pb-16 animate-fade-in">
 			{/* Section 1 */}
 			<h1 className="text-3xl font-semibold sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center mb-10">
 				За нас

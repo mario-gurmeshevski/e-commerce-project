@@ -1,4 +1,4 @@
-export const formatProductSlug = (name: string) => {
+export const formatSlug = (name: string) => {
 	return name
 		.toLowerCase()
 		.replace(/\s+/g, '-')

@@ -1,7 +1,7 @@
 import { Honey } from '../../interfaces/honey'
 import { useCart } from '../cart/useCart.tsx'
 import { Link } from 'react-router-dom'
-import { formatProductSlug } from '../../common/formatting'
+import { formatSlug } from '../../common/formatting'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { Transition } from '@headlessui/react'
 import React from 'react'
@@ -18,12 +18,16 @@ const ShopItem = ({ item }: { item: Honey }) => {
 	return (
 		<article className="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
 			<Link
-				to={`/shop/${formatProductSlug(item.name)}`}
+				to={`/shop/${formatSlug(item.name)}`}
 				state={{ item }}
 				className="block p-4 space-y-4"
-				onClick={() => sessionStorage.setItem('currentItem', JSON.stringify(item))}
+				onClick={() =>
+					sessionStorage.setItem(
+						`currentItem:${formatSlug(item.name)}`,
+						JSON.stringify(item)
+					)
+				}
 			>
-				{/* Image Section */}
 				<div className="relative aspect-square overflow-hidden rounded-lg">
 					<img
 						src={item.image}

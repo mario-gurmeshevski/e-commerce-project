@@ -6,6 +6,8 @@ import {
 	XMarkIcon,
 	InformationCircleIcon,
 	EnvelopeIcon,
+	NewspaperIcon,
+	HeartIcon,
 } from '@heroicons/react/24/outline'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
@@ -36,13 +38,24 @@ const InstagramIcon = ({ isHome }: { isHome: boolean }) => (
 	</svg>
 )
 
-const LeftNav = ({ isMobile = false, closeMenu = () => {} }) => {
+const LeftNav = ({
+	isMobile = false,
+	closeMenu = () => {},
+	isHome = false,
+}) => {
+	const [isPopoverOpen, setPopoverOpen] = useState(false)
+
+	const mobileLinkClass =
+		'flex items-center py-3 px-2 rounded-lg hover:bg-gray-800 focus:bg-gray-800 transition-colors focus:outline-none'
+	const desktopLinkClass =
+		'group relative text-lg px-3 py-2 transition-colors focus:outline-none'
+
 	return (
 		<div
 			className={`${
 				isMobile
-					? 'flex flex-col space-y-4 p-6 w-full'
-					: 'flex justify-between items-center w-full p-6'
+					? 'flex flex-col space-y-2 p-6 w-full min-h-screen'
+					: 'flex items-center gap-x-4 p-4'
 			}`}
 		>
 			{isMobile && (
@@ -56,49 +69,98 @@ const LeftNav = ({ isMobile = false, closeMenu = () => {} }) => {
 
 			<Link
 				to="/shop"
-				className={`group relative ${
-					isMobile
-						? 'flex items-center py-3 px-2 rounded-lg hover:bg-gray-800 transition-colors'
-						: 'text-lg'
-				}`}
+				className={isMobile ? mobileLinkClass : `${desktopLinkClass}`}
 				onClick={isMobile ? closeMenu : undefined}
 			>
 				{isMobile && <ShoppingCartIcon className="h-5 w-5" />}
-				<span className="pl-3">Продавница</span>
+				{isMobile && <span className="pl-3">Продавница</span>}
 				{!isMobile && (
-					<div className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
+					<span className="relative">
+						Продавница
+						<span className="absolute left-0 -bottom-1 h-px w-0 bg-current transition-all duration-300 group-hover:w-full"></span>
+					</span>
 				)}
 			</Link>
 
+			{isMobile ? (
+				<>
+					<Link to="/blog" className={mobileLinkClass} onClick={closeMenu}>
+						<NewspaperIcon className="h-5 w-5" />
+						<span className="pl-3">Блог</span>
+					</Link>
+					<Link to="/health" className={mobileLinkClass} onClick={closeMenu}>
+						<HeartIcon className="h-5 w-5" />
+						<span className="pl-3">Придобивки за Здравјето</span>
+					</Link>
+				</>
+			) : (
+				<Popover className="relative">
+					<>
+						<PopoverButton
+							className={`${desktopLinkClass}`}
+							tabIndex={0}
+							onMouseEnter={() => setPopoverOpen(true)}
+							onMouseLeave={() => setPopoverOpen(false)}
+							onFocus={() => setPopoverOpen(true)}
+							onBlur={() => setPopoverOpen(false)}
+							aria-haspopup="true"
+							aria-expanded={isPopoverOpen}
+						>
+							<span className="relative">
+								Вести
+								<span className="absolute left-0 -bottom-1 h-px w-0 bg-current transition-all duration-300 group-hover:w-full"></span>
+							</span>
+						</PopoverButton>
+						{isPopoverOpen && (
+							<PopoverPanel
+								static
+								className={`absolute z-10 w-max rounded-lg shadow-lg ${
+									isHome ? 'bg-white text-black' : 'bg-white'
+								}`}
+								onMouseEnter={() => setPopoverOpen(true)}
+								onMouseLeave={() => setPopoverOpen(false)}
+							>
+								<div className="p-1 flex flex-col">
+									<Link to="/blog" className="p-3 hover:bg-gray-200 rounded-md">
+										<span className="pl-3">Блог</span>
+									</Link>
+									<Link to="/health" className="p-3 hover:bg-gray-200 rounded-md">
+										<span className="pl-3">Придобивки за Здравјето</span>
+									</Link>
+								</div>
+							</PopoverPanel>
+						)}
+					</>
+				</Popover>
+			)}
+
 			<Link
 				to="/about"
-				className={`group relative ${
-					isMobile
-						? 'flex items-center py-3 px-2 rounded-lg hover:bg-gray-800 transition-colors'
-						: 'text-lg'
-				}`}
+				className={isMobile ? mobileLinkClass : `${desktopLinkClass}`}
 				onClick={isMobile ? closeMenu : undefined}
 			>
 				{isMobile && <InformationCircleIcon className="h-5 w-5" />}
-				<span className="pl-3">За Нас</span>
+				{isMobile && <span className="pl-3 whitespace-nowrap">За Нас</span>}
 				{!isMobile && (
-					<div className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
+					<span className="relative whitespace-nowrap">
+						За Нас
+						<span className="absolute left-0 -bottom-1 h-px w-0 bg-current transition-all duration-300 group-hover:w-full"></span>
+					</span>
 				)}
 			</Link>
 
 			<Link
 				to="/contact"
-				className={`group relative ${
-					isMobile
-						? 'flex items-center py-3 px-2 rounded-lg hover:bg-gray-800 transition-colors'
-						: 'text-lg'
-				}`}
+				className={isMobile ? mobileLinkClass : `${desktopLinkClass}`}
 				onClick={isMobile ? closeMenu : undefined}
 			>
 				{isMobile && <EnvelopeIcon className="h-5 w-5" />}
-				<span className="pl-3">Контакт</span>
+				{isMobile && <span className="pl-3">Контакт</span>}
 				{!isMobile && (
-					<div className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
+					<span className="relative">
+						Контакт
+						<span className="absolute left-0 -bottom-1 h-px w-0 bg-current transition-all duration-300 group-hover:w-full"></span>
+					</span>
 				)}
 			</Link>
 
@@ -107,13 +169,15 @@ const LeftNav = ({ isMobile = false, closeMenu = () => {} }) => {
 					<div className="flex space-x-4">
 						<a
 							href="https://www.facebook.com/makmela.apiculture"
-							className="p-2 rounded-full transition-colors"
+							className="p-2 rounded-full transition-colors hover:bg-gray-800"
+							aria-label="Facebook"
 						>
 							<FacebookIcon isHome={true} />
 						</a>
 						<a
 							href="https://www.instagram.com/makmela.apiculture/"
-							className="p-2 rounded-full transition-colors"
+							className="p-2 rounded-full transition-colors hover:bg-gray-800"
+							aria-label="Instagram"
 						>
 							<InstagramIcon isHome={true} />
 						</a>
@@ -127,10 +191,8 @@ const LeftNav = ({ isMobile = false, closeMenu = () => {} }) => {
 const CenterNav = () => {
 	return (
 		<Link to="/" className="text-center flex items-center">
-			<img src={bee} alt="bee" className="h-7 md:h-12 mr-2" />
-			<span className={'text-2xl md:text-4xl tracking-widest font-thin'}>
-				МАКМЕЛА
-			</span>
+			<img src={bee} alt="bee" className="h-12 mr-2" />
+			<span className={'text-4xl tracking-widest font-thin'}>МАКМЕЛА</span>
 		</Link>
 	)
 }
@@ -504,7 +566,7 @@ const Navigation = () => {
 	useEffect(() => {
 		const handleResize = () => {
 			setWindowWidth(window.innerWidth)
-			if (window.innerWidth > 1260) {
+			if (window.innerWidth > 1024) {
 				setIsMobileMenuOpen(false)
 			}
 		}
@@ -536,8 +598,8 @@ const Navigation = () => {
 				}`}
 			>
 				{/* Left Section */}
-				<div className="flex-1 flex items-center px-4">
-					{windowWidth <= 1260 ? (
+				<div className="flex-1 flex items-center">
+					{windowWidth <= 1024 ? (
 						<button onClick={toggleMobileMenu} className="focus:outline-none">
 							{isMobileMenuOpen ? (
 								<XMarkIcon className="h-6 w-6" />
@@ -546,7 +608,7 @@ const Navigation = () => {
 							)}
 						</button>
 					) : (
-						<LeftNav />
+						<LeftNav isHome={isHome} />
 					)}
 				</div>
 
@@ -557,7 +619,7 @@ const Navigation = () => {
 
 				{/* Right Section */}
 				<div className="flex-1 flex items-center justify-between px-4">
-					{windowWidth > 1260 && (
+					{windowWidth > 1024 && (
 						<div className="flex space-x-8">
 							<a
 								href="https://www.facebook.com/makmela.apiculture"
@@ -583,7 +645,7 @@ const Navigation = () => {
 				</div>
 			</nav>
 
-			{windowWidth <= 1260 && (
+			{windowWidth <= 1024 && (
 				<>
 					<div
 						className={`fixed top-0 left-0 w-4/5 max-w-xs h-screen bg-gray-900 shadow-2xl z-50 text-white overflow-hidden ${
@@ -616,7 +678,7 @@ const Navigation = () => {
 				</>
 			)}
 
-			{isMobileMenuOpen && windowWidth <= 1260 && (
+			{isMobileMenuOpen && windowWidth <= 1024 && (
 				<div
 					className="fixed inset-0 bg-black bg-opacity-30 z-40 animate-overlay-enter"
 					onClick={closeMobileMenu}

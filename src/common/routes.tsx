@@ -19,6 +19,10 @@ import { useCart } from '../components/cart/useCart.tsx'
 import Order from '../components/order.tsx'
 import Terms from '../components/policy/terms.tsx'
 import Privacy from '../components/policy/privacy.tsx'
+import Blog from '../components/blog/blog.tsx'
+import BlogDetails from '../components/blog/blogDetails.tsx'
+import Health from '../components/health/health.tsx'
+import HealthDetails from '../components/health/healthDetails.tsx'
 
 const AppRoutes = () => {
 	const location = useLocation()
@@ -32,6 +36,8 @@ const AppRoutes = () => {
 		'/checkout': 'Checkout - Makmela',
 		'/terms': 'Terms - Makmela',
 		'/privacy': 'Privacy - Makmela',
+		'/blog': 'Blog - Makmela',
+		'/health': 'Health - Makmela',
 	}
 
 	const ProtectedCheckout = () => {
@@ -39,33 +45,12 @@ const AppRoutes = () => {
 		return getTotalItems() > 0 ? <Checkout /> : <Navigate to="/shop" replace />
 	}
 
-	const useDynamicTitle = () => {
-		const location = useLocation()
-
-		useEffect(() => {
-			const path = location.pathname
-
-			// Handle product names
-			if (path.startsWith('/shop/')) {
-				const storedItem = sessionStorage.getItem('currentItem')
-				const item =
-					location.state?.item || (storedItem ? JSON.parse(storedItem) : null)
-				if (item) {
-					document.title = `${item.name} - Makmela`
-				} else {
-					const productRename = path.split('/shop/')[1]
-					const formattedName = decodeURIComponent(productRename)
-						.replace(/-/g, ' ')
-						.normalize('NFD')
-						.replace(/[\u0300-\u036f]/g, '')
-					document.title = `${formattedName} - Makmela`
-				}
-			} else {
-				document.title = routeTitles[path] || 'Not Found - Makmela'
-			}
-		}, [location])
-	}
-	useDynamicTitle()
+	useEffect(() => {
+		const staticTitle = routeTitles[location.pathname]
+		if (staticTitle) {
+			document.title = staticTitle
+		}
+	}, [location.pathname])
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -87,6 +72,10 @@ const AppRoutes = () => {
 					<Route path="/order/:id" element={<Order />} />
 					<Route path="/terms" element={<Terms />} />
 					<Route path="/privacy" element={<Privacy />} />
+					<Route path="/blog" element={<Blog />} />
+					<Route path="/blog/:slug" element={<BlogDetails />} />
+					<Route path="/health" element={<Health />} />
+					<Route path="/health/:slug" element={<HealthDetails />} />
 					<Route path="/api/*" element={<Navigate to="/not-found" replace />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
