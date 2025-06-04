@@ -2,11 +2,11 @@
 	"rewrites": [
 		{
 			"source": "/api/(.*)",
-			"destination": "https://makmela-api-production.up.railway.app/api/$1"
+			"destination": "https://makmela-api.onrender.com/api/$1"
 		},
 		{
 			"source": "/uploads/(.*)",
-			"destination": "https://makmela-api-production.up.railway.app/uploads/$1"
+			"destination": "https://makmela-api.onrender.com/uploads/$1"
 		},
 		{
 			"source": "/((?!api|uploads).*)",
