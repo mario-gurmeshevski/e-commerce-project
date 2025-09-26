@@ -39,13 +39,11 @@ const ShopItem = ({ item }: { item: Honey }) => {
 					/>
 				</div>
 
-				{/* Product Info */}
 				<div className="space-y-2">
 					<h2 className="font-medium text-gray-900 line-clamp-2 leading-tight">
 						{item.name}
 					</h2>
 
-					{/* Pricing */}
 					<div className="flex flex-wrap items-baseline gap-2">
 						{item.discount > 0 ? (
 							<>
@@ -66,7 +64,6 @@ const ShopItem = ({ item }: { item: Honey }) => {
 						)}
 					</div>
 
-					{/* Stock Status */}
 					<div className="flex items-center gap-2">
 						<div
 							className={`h-2 w-2 rounded-full ${
@@ -84,7 +81,6 @@ const ShopItem = ({ item }: { item: Honey }) => {
 				</div>
 			</Link>
 
-			{/* Add to Cart Button */}
 			<div className="p-4 pt-0 mt-auto relative overflow-hidden">
 				<button
 					className={`w-full flex items-center justify-center gap-2 

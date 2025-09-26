@@ -1,6 +1,6 @@
 export interface ContentItem {
 	type: 'paragraph' | 'image'
-	content: string | string[]
+	content: string
 	itemHeader?: string
 }
 

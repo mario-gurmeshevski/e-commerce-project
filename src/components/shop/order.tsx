@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
-import { IOrder } from '../interfaces/order'
-import NotFoundOrder from './common/notFoundOrder'
+import { IOrder } from '../../interfaces/order'
 import toast from 'react-hot-toast'
+import ErrorMessage from '../common/ErrorMessage'
+import Loader from '../common/Loader'
+import { fetchWithFallback } from '../../utils/apiClient.ts'
+import { API_CONFIG } from '../../utils/apiConfig'
 
 export default function Order() {
 	const { id } = useParams<{ id: string }>()
@@ -16,8 +18,16 @@ export default function Order() {
 	useEffect(() => {
 		const fetchOrder = async () => {
 			try {
-				const response = await axios.get(`/api/order/${id}`)
-				setOrder(response.data)
+				const response = await fetchWithFallback<IOrder>(
+					`${API_CONFIG.endpoints.order}/${id}`,
+					'order.json'
+				)
+				// Handle both direct object and response wrapper
+				if (response.data) {
+					setOrder(response.data)
+				} else {
+					setError('Нарачката не е пронајдена или не постои')
+				}
 			} catch (_err) {
 				setError('Нарачката не е пронајдена или не постои')
 			} finally {
@@ -31,7 +41,26 @@ export default function Order() {
 	const handleCancel = async () => {
 		if (!order) return
 
-		const promise = axios.delete(`/api/order/${order.id}`)
+		// Create cancel function that handles both API and fallback scenarios
+		const cancelOrder = async () => {
+			try {
+				const response = await fetch(`${API_CONFIG.endpoints.order}/${order.id}`, {
+					method: 'DELETE',
+				})
+
+				if (!response.ok) {
+					throw new Error('Failed to cancel order')
+				}
+
+				return response
+			} catch (error) {
+				// If API call fails, we could implement local storage fallback here
+				// For now, we'll just throw an error to trigger the error state
+				throw error
+			}
+		}
+
+		const promise = cancelOrder()
 		toast.promise(
 			promise,
 			{
@@ -63,25 +92,27 @@ export default function Order() {
 
 	useEffect(() => {
 		if (order && order.orderId) {
-			document.title = `Order #${order.orderId} - Makmela`
+			document.title = `Order #${order.orderId} - E Commerce`
 		} else if (error || (order && !order.orderId)) {
-			document.title = 'Order not Found - Makmela'
+			document.title = 'Order not Found - E Commerce'
 		}
 	}, [order, error])
 
 	if (isLoading)
 		return (
 			<div className="text-center p-6 min-h-[200px] flex items-center justify-center">
-				Loading...
+				<Loader />
 			</div>
 		)
-	if (error) return <NotFoundOrder />
-	if (!order || !order.cart || !order.cart.items) return <NotFoundOrder />
+	if (error) return <ErrorMessage message={error} />
+
+	if (!order || !order.cart || !order.cart.items) {
+		return <ErrorMessage message="Нарачката не е пронајдена или не постои" />
+	}
 
 	return (
 		<div className="max-w-2xl mx-auto p-2 sm:p-4 md:p-6">
 			<div className="border rounded-lg p-3 sm:p-6 shadow-md bg-white">
-				{/* Header */}
 				<div className="flex flex-col items-center justify-center sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
 					<div className="text-center sm:text-left">
 						<h1 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">
@@ -105,7 +136,6 @@ export default function Order() {
 					)}
 				</div>
 
-				{/* Info Cards */}
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 mb-6">
 					<div className="bg-gray-50 p-4 rounded-lg shadow-sm">
 						<h2 className="font-semibold text-base mb-2">Доставни Информации</h2>
@@ -137,7 +167,6 @@ export default function Order() {
 					</div>
 				</div>
 
-				{/* Products */}
 				<div>
 					<h2 className="font-semibold text-base mb-4">Производи</h2>
 					<div className="space-y-4">
@@ -157,7 +186,6 @@ export default function Order() {
 						))}
 					</div>
 
-					{/* Price Summary */}
 					<div className="mt-6 pt-4 border-t text-base space-y-2">
 						<div className="flex justify-between">
 							<span>Цена:</span>

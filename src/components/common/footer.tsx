@@ -12,9 +12,7 @@ const Footer = () => {
 		>
 			<hr className={`mb-4 md:mb-8 ${isHome ? 'border-white' : 'border-black'}`} />
 			<div className=" px-4 md:px-8  flex flex-col items-center  space-y-4">
-				{/* Left and Right Sections */}
 				<div className="w-full flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-					{/* Left Section */}
 					<div className="flex flex-col items-center md:items-start space-y-1 text-center md:text-left">
 						<p className="text-xs sm:text-sm">
 							Проверете ги нашите{' '}
@@ -38,11 +36,8 @@ const Footer = () => {
 						</Link>
 					</div>
 
-					{/* Right Section */}
 					<div className="flex flex-col items-center md:items-end space-y-1 text-center md:text-right">
-						<p className="text-xs sm:text-sm">
-							© BeeHappy-Makmela is a registered Trademark.
-						</p>
+						<p className="text-xs sm:text-sm">©E Commerce is a registered.</p>
 						<p className="text-xs sm:text-sm">All rights reserved.</p>
 					</div>
 				</div>

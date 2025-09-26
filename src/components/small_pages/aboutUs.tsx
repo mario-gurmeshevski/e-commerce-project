@@ -1,17 +1,15 @@
-import UsWithTheBees from '../images/aboutUs/Us_with_the_Bees.jpg'
-import AboutTheBrand from '../images/aboutUs/About_the_Brand.jpg'
-import Nature from '../images/aboutUs/Nature2.jpg'
+import UsWithTheBees from '../../images/aboutUs/Us_with_the_Bees.jpg'
+import AboutTheBrand from '../../images/aboutUs/About_the_Brand.jpg'
+import Nature from '../../images/aboutUs/Nature2.jpg'
 
 const AboutUs = () => {
 	return (
 		<div className="pt-10 pb-16 animate-fade-in">
-			{/* Section 1 */}
 			<h1 className="text-3xl font-semibold sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center mb-10">
 				За нас
 			</h1>
 			<div className="max-w-7xl mx-auto px-4 mb-20">
 				<div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row items-stretch gap-8 p-8">
-					{/* Image Column */}
 					<div className="md:w-1/2 relative overflow-hidden rounded-xl group">
 						<img
 							src={AboutTheBrand}
@@ -21,7 +19,6 @@ const AboutUs = () => {
 						<div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/10" />
 					</div>
 
-					{/* Text Column */}
 					<div className="md:w-1/2 flex flex-col justify-center p-4 space-y-6">
 						<h2 className="text-3xl text-black font-bold">НАШЕТО ПЧЕЛАРСТВО</h2>
 						<div className="space-y-4 text-gray-700">
@@ -50,10 +47,8 @@ const AboutUs = () => {
 				</div>
 			</div>
 
-			{/* Section 2 */}
 			<div className="max-w-7xl mx-auto px-4 mb-20">
 				<div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row-reverse items-stretch gap-8 p-8">
-					{/* Image Column */}
 					<div className="md:w-1/2 relative overflow-hidden rounded-xl group">
 						<img
 							src={UsWithTheBees}
@@ -63,12 +58,13 @@ const AboutUs = () => {
 						<div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/10" />
 					</div>
 
-					{/* Text Column */}
 					<div className="md:w-1/2 flex flex-col justify-center p-4 space-y-6">
 						<h2 className="text-3xl text-black font-bold">НИЕ И ПЧЕЛИТЕ</h2>
 
 						<div className="space-y-4 text-gray-700">
-							<p>Во МАКМЕЛА сме страствени заљубеници во пчелите и нивните креации.</p>
+							<p>
+								Во E Commerce сме страствени заљубеници во пчелите и нивните креации.
+							</p>
 
 							<div className="grid gap-4 sm:grid-cols-2">
 								<div className="border-l-2 border-black pl-4">
@@ -97,10 +93,8 @@ const AboutUs = () => {
 				</div>
 			</div>
 
-			{/* Section 3 */}
 			<div className="max-w-7xl mx-auto px-4">
 				<div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row items-stretch gap-8 p-8">
-					{/* Image Column */}
 					<div className="md:w-1/2 relative overflow-hidden rounded-xl group">
 						<img
 							src={Nature}
@@ -109,7 +103,6 @@ const AboutUs = () => {
 						/>
 						<div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/10" />
 					</div>
-					{/* Text Column */}
 					<div className="md:w-1/2 flex flex-col justify-center p-4 space-y-6">
 						<h2 className="text-3xl text-black-800 font-bold">ПРИРОДА</h2>
 

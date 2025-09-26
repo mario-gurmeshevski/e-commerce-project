@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { CategoryEnum, Honey } from '../../interfaces/honey'
 import ShopItem from './shopItem'
-import Loader from '../common/Loader.tsx'
+import Loader from '../common/Loader'
 import {
 	Listbox,
 	ListboxButton,
@@ -13,31 +12,32 @@ import {
 	TabList,
 } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
+import ErrorMessage from '../common/ErrorMessage'
+import { fetchWithFallback } from '../../utils/apiClient.ts'
+import { API_CONFIG } from '../../utils/apiConfig'
+import { CATEGORY_LABELS_MK, SORT_OPTIONS, ERROR_MESSAGES } from '../../utils/constants.ts'
 
+// Mapping of category enum values to their Macedonian labels for display
 const CATEGORY_LABELS: Record<CategoryEnum | 'all', string> = {
-	all: 'Сите',
-	[CategoryEnum.HONEY]: 'Мед',
-	[CategoryEnum.POLLEN]: 'Полен',
-	[CategoryEnum.HONEYCOMB]: 'Саќе',
-	[CategoryEnum.ROYAL_JELLY]: 'Матичен Млеч',
-	[CategoryEnum.PROPOLIS_SPRAY]: 'Прополис Спреј',
+	all: CATEGORY_LABELS_MK.ALL,
+	[CategoryEnum.HONEY]: CATEGORY_LABELS_MK.HONEY,
+	[CategoryEnum.POLLEN]: CATEGORY_LABELS_MK.POLLEN,
+	[CategoryEnum.HONEYCOMB]: CATEGORY_LABELS_MK.HONEYCOMB,
+	[CategoryEnum.ROYAL_JELLY]: CATEGORY_LABELS_MK.ROYAL_JELLY,
+	[CategoryEnum.PROPOLIS_SPRAY]: CATEGORY_LABELS_MK.PROPOLIS_SPRAY,
 }
-
-const SORT_OPTIONS = [
-	{ value: 'name_asc', label: 'Име (A-Ш)' },
-	{ value: 'name_desc', label: 'Име (Ш-А)' },
-	{ value: 'price_asc', label: 'Цена (најниска)' },
-	{ value: 'price_desc', label: 'Цена (највисока)' },
-]
 
 const Shop = () => {
 	const [items, setItems] = useState<Honey[]>([])
 	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState<string | null>(null)
 	const [category, setCategory] = useState<'all' | CategoryEnum>('all')
 	const [sort, setSort] = useState('name_asc')
 
+	// Fetch products from the API or fallback data when category or sort changes
 	useEffect(() => {
 		setLoading(true)
+		// NOTE: Removed the incorrect setError(error) call that was using the state variable
 		const controller = new AbortController()
 		const fetchProducts = async () => {
 			try {
@@ -56,15 +56,23 @@ const Shop = () => {
 					params.sortBy = 'name'
 					params.order = 'desc'
 				}
-				const { data } = await axios.get<Honey[]>('/api/honey', {
-					params,
-					signal: controller.signal,
-				})
+				
+				// Add params to the URL for API calls
+				const paramsString = new URLSearchParams(params).toString();
+				const url = paramsString ? `${API_CONFIG.endpoints.honey}?${paramsString}` : API_CONFIG.endpoints.honey;
+				
+				const response = await fetchWithFallback<Honey[]>(url, 'honey.json')
+				// Ensure response.data is an array before setting state
+				const data = Array.isArray(response.data) ? response.data : []
+				
 				setItems(data)
 			} catch (error) {
-				if (!axios.isCancel(error)) {
-					//console.error('Error fetching products:', error)
-				}
+					// Since we're not using axios for the actual request anymore, 
+					// the isCancel check is no longer relevant
+					// We can just check if the controller was aborted
+					if (!controller.signal.aborted) {
+						setError(ERROR_MESSAGES.PRODUCTS_LOAD_FAILED)
+					}
 			} finally {
 				if (!controller.signal.aborted) {
 					setLoading(false)
@@ -75,6 +83,9 @@ const Shop = () => {
 		return () => controller.abort()
 	}, [category, sort])
 
+	if (loading) return <Loader />
+	if (error) return <ErrorMessage message={error} />
+
 	return (
 		<main className="container mx-auto px-4 py-8 md:pb-12 md:pt-10">
 			<h1 className="text-3xl font-semibold sm:text-4xl underline underline-offset-[12px] sm:underline-offset-[16px] text-center mb-10">
@@ -83,7 +94,7 @@ const Shop = () => {
 			<div className="flex flex-col gap-4 mb-8 lg:flex-row lg:items-center lg:justify-between">
 				<TabGroup
 					selectedIndex={Object.keys(CATEGORY_LABELS).indexOf(category)}
-					onChange={(idx) => setCategory(Object.keys(CATEGORY_LABELS)[idx] as any)}
+					onChange={(idx) => setCategory(Object.keys(CATEGORY_LABELS)[idx] as 'all' | CategoryEnum)}
 					className="w-full lg:w-auto"
 				>
 					<TabList className="flex gap-2 w-full overflow-x-auto py-2 px-1 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">

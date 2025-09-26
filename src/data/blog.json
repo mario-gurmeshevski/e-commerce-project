@@ -1,0 +1,80 @@
+{
+	"blog": [
+		{
+			"id": "b53793a0-b214-446c-bdba-843091d2cc5a",
+			"title": "Уште една потврда за квалитетот на нашиот Премиум Мед",
+			"header": "Уште една потврда за квалитетот на нашиот Премиум Мед, добиена при редовна контрола од референтна лабараторија на Факултетот за ветеринарна медицина - Скопје, со која нашиот мед содржи само 0,15% сахароза што докажува дека нашите пчели се хранат со својот квалитетен мед, а не со додаден шеќер. Природата е директно на вашата маса.",
+			"mainImage": "/data/images/blog/1_documents.jpg",
+			"content": [
+				{
+					"items": [
+						{
+							"type": "paragraph",
+							"content": "Кликнете на линкот подолу за резултатите од испитувањето:\n http://localhost:5173/uploads/files/%D0%98%D0%B7%D0%B2%D0%B5%D1%81%D1%82%D1%83%D0%B2%D0%B0%D1%9A%D0%B5-%D0%BE%D0%B4-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%B0%D1%9A%D0%B5-%D0%9C%D0%B0%D0%BA%D0%BC%D0%B5%D0%BB%D0%B0-2022.pdf"
+						},
+						{
+							"type": "image",
+							"content": "/data/images/blog/1_documents.jpg"
+						}
+					]
+				},
+				{
+					"items": [
+						{
+							"type": "image",
+							"content": "/data/images/blog/2_documents.jpg"
+						},
+						{
+							"type": "image",
+							"content": "/data/images/blog/3_documents.jpg"
+						}
+					]
+				}
+			],
+			"createdAt": "2025-07-10T08:25:38.862Z",
+			"deletedAt": null
+		},
+		{
+			"id": "c71312d2-423d-4dda-a850-eca4e42e4f72",
+			"title": "E Commerce оствари успешна соработка со Технолошко-металуршки факултет – Скопје и Факултетското Студентско Собрание на ТМФ.",
+			"header": "E Commerce оствари успешна соработка со Технолошко-металуршки факултет – Скопје и Факултетското Студентско Собрание на ТМФ.",
+			"mainImage": "/data/images/blog/1_colabs.jpg",
+			"content": [
+				{
+					"items": [
+						{
+							"type": "paragraph",
+							"content": "На онлајн донаторскиот настан https://www.instagram.com/explore/tags/novemberfest/, се дегустираа различни типови на уникатни молекуларни производи креирани од професорите и студентите, а една од главните состојки бешеs Премиум медот."
+						},
+						{
+							"type": "image",
+							"content": "/data/images/blog/1_colabs.jpg"
+						}
+					]
+				},
+				{
+					"items": [
+						{
+							"type": "image",
+							"content": "/data/images/blog/2_colabs.jpg"
+						},
+						{
+							"type": "image",
+							"content": "/data/images/blog/3_colabs.jpg"
+						}
+					]
+				},
+				{
+					"items": [
+						{
+							"type": "paragraph",
+							"content": "За повеќе информации, посетете ги нивните Instagram страници: https://www.instagram.com/tmf_skopje/ и https://www.instagram.com/fss.tmf/."
+						}
+					]
+				}
+			],
+			"createdAt": "2025-07-10T08:25:26.123Z",
+			"deletedAt": null
+		}
+	]
+}

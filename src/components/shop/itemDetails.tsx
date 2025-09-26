@@ -1,3 +1,21 @@
+/**
+ * Item Details Component
+ *
+ * This component displays detailed information for a specific product.
+ * It fetches product information from the API or fallback data based on the product name
+ * in the URL. The component features a tabbed interface for product information,
+ * quantity selector, and add-to-cart functionality.
+ *
+ * Features:
+ * - Product detail display with images and descriptions
+ * - Tabbed interface for product information (flowers, aroma, consumption)
+ * - Quantity selector with inventory validation
+ * - Add to cart functionality
+ * - Loading and error states
+ * - Product slug validation
+ * - Session storage caching for product data
+ */
+
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import { useCart } from '../cart/useCart.tsx'
@@ -7,14 +25,27 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { formatSlug } from '../../common/formatting'
 import { Transition } from '@headlessui/react'
-import axios from 'axios'
 import Loader from '../common/Loader.tsx'
+import ErrorMessage from '../common/ErrorMessage.tsx'
+import { fetchWithFallback } from '../../utils/apiClient.ts'
+import { API_CONFIG } from '../../utils/apiConfig'
 
+/**
+ * Component to display detailed information for a single product
+ * Fetches product data based on the productName parameter from the URL
+ */
 const ItemDetails: React.FC = () => {
 	const { addToCart } = useCart()
 	const location = useLocation()
 	const { productName } = useParams<{ productName: string }>()
+	/**
+	 * Session storage key for caching current item data
+	 */
 	const storageKey = `currentItem:${productName}`
+
+	/**
+	 * Current item state, initialized with data from location state or session storage
+	 */
 	const [item, setItem] = useState<Honey | null>(() => {
 		const stateItem = location.state?.item
 		if (stateItem) return stateItem
@@ -22,17 +53,37 @@ const ItemDetails: React.FC = () => {
 		return storedItem ? JSON.parse(storedItem) : null
 	})
 
+	/**
+	 * Selected quantity for the item, starts at 1
+	 */
 	const [quantity, setQuantity] = useState(1)
+
+	/**
+	 * Currently selected tab index for product information
+	 */
 	const [selectedTab, setSelectedTab] = useState(0)
+
+	/**
+	 * Loading state to show/hide loader component
+	 */
 	const [loading, setLoading] = useState(false)
+
+	/**
+	 * Error state to display error messages to the user
+	 */
 	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
 		if (item && item.name) {
-			document.title = `${item.name} - Makmela`
+			document.title = `${item.name} - E Commerce`
 		}
 	}, [item])
 
+	/**
+	 * Fetches item data based on the productName parameter
+	 * First checks session storage for cached data, then fetches from API or fallback
+	 * Updates document title with item name and caches data in session storage
+	 */
 	useEffect(() => {
 		const storageKey = `currentItem:${productName}`
 		const storedItem = sessionStorage.getItem(storageKey)
@@ -44,51 +95,55 @@ const ItemDetails: React.FC = () => {
 		if (productName) {
 			setLoading(true)
 			setError(null)
-			axios
-				.get(`/api/honey/name/${productName}`)
+			fetchWithFallback<Honey>(
+				`${API_CONFIG.endpoints.honey}/name/${productName}`,
+				'honey.json'
+			)
 				.then((res) => {
-					setItem(res.data)
-					sessionStorage.setItem(storageKey, JSON.stringify(res.data))
+					// Handle both single item and array responses
+					let honeyData: Honey | null = null
+					if (Array.isArray(res.data)) {
+						honeyData =
+							res.data.find((item) => formatSlug(item.name) === productName) || null
+					} else {
+						honeyData = res.data
+					}
+
+					if (honeyData) {
+						setItem(honeyData)
+						sessionStorage.setItem(storageKey, JSON.stringify(honeyData))
+					} else {
+						setError('Продуктот не е пронајден')
+					}
 				})
 				.catch(() => setError('Продуктот не е пронајден'))
 				.finally(() => setLoading(false))
 		}
 	}, [productName])
 
+	/**
+	 * Updates the selected quantity for the item
+	 * Ensures quantity never goes below 1
+	 *
+	 * @param {'increment' | 'decrement'} type - Whether to increase or decrease quantity
+	 */
 	const handleQuantityChange = (type: 'increment' | 'decrement') => {
 		setQuantity((prev) => Math.max(1, type === 'increment' ? prev + 1 : prev - 1))
 	}
 
 	if (loading) return <Loader />
 
-	if (error)
-		return (
-			<div className="flex items-center justify-center h-[70vh] text-xl font-medium text-red-500">
-				{error}
-			</div>
-		)
-
-	if (!item || !item.name) {
-		return (
-			<div className="flex items-center justify-center h-[70vh] text-xl font-medium">
-				Продуктот не е пронајден
-			</div>
-		)
-	}
+	if (error) return <ErrorMessage message={error} />
+	if (!item || !item.name)
+		return <ErrorMessage message="Продуктот не е пронајден" />
 
 	const expectedSlug = formatSlug(item.name)
 	if (productName !== expectedSlug) {
-		return (
-			<div className="text-center mt-10 text-xl font-medium text-red-500">
-				Невалиден URL за производот
-			</div>
-		)
+		return <ErrorMessage message="Невалиден URL за производот" />
 	}
 	return (
 		<div className="container mx-auto px-4 sm:px-6 py-8 md:py-12">
-			{/* Product Main Section */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-				{/* Image Section */}
 				<div className="relative group overflow-hidden rounded-xl aspect-square">
 					<img
 						src={item.image}
@@ -98,7 +153,6 @@ const ItemDetails: React.FC = () => {
 					/>
 				</div>
 
-				{/* Product Details */}
 				<div className="space-y-6">
 					<div>
 						<h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
@@ -107,7 +161,6 @@ const ItemDetails: React.FC = () => {
 						<p className="text-gray-500 text-lg mb-4">Пакување: {item.weight}г</p>
 					</div>
 
-					{/* Price Section */}
 					<div className="space-y-4">
 						<div className="flex items-baseline gap-4">
 							{item.discount > 0 ? (
@@ -147,7 +200,6 @@ const ItemDetails: React.FC = () => {
 
 					<hr className="border-t border-gray-200" />
 
-					{/* Quantity Selector */}
 					<div className="flex items-center gap-4">
 						<div className="flex items-center border border-gray-200 rounded-lg">
 							<button
@@ -183,7 +235,6 @@ const ItemDetails: React.FC = () => {
 						</button>
 					</div>
 
-					{/* Tabs Section */}
 					<TabGroup selectedIndex={selectedTab} onChange={setSelectedTab}>
 						<TabList className="flex justify-between w-full">
 							{['ЦВЕТОВИ', 'АРОМА', 'КОНСУМИРАЈ'].map((tab) => (
