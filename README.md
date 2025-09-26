@@ -57,7 +57,7 @@ src/
 
 ```bash
 git clone <repository-url>
-cd makmela-app
+cd e-commerce-project
 ```
 
 2. Install dependencies:
