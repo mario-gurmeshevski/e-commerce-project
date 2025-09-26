@@ -1,0 +1,634 @@
+[
+	{
+		"id": "aeb4daf1-ee76-46ab-8022-963313553382",
+		"orderId": 6,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "sfsafa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 2
+				},
+				{
+					"id": "3c89b4ee-abc4-45bb-8fdf-942d085a90bf",
+					"name": "Дехидриран Полен",
+					"image": "/uploads/honey/IMG_3783-dehydrated-pollen-a1616512-a8b8-472f-a302-0086ffaa9a65.png",
+					"price": 400,
+					"discount": 0,
+					"quantity": 2
+				}
+			],
+			"priceSummary": {
+				"total": 2200,
+				"shipping": 0,
+				"subtotal": 2200
+			}
+		},
+		"createdAt": "2025-04-30T21:06:29.573Z",
+		"deletedAt": null
+	},
+	{
+		"id": "fe958736-1d79-4ffc-80e9-5644d755b0dd",
+		"orderId": 7,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "saafsa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-04-30T21:08:13.488Z",
+		"deletedAt": null
+	},
+	{
+		"id": "c6ff9e22-93b1-4432-ad3d-357e73fdfb3c",
+		"orderId": 9,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "casxda",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-04-30T21:09:21.500Z",
+		"deletedAt": null
+	},
+	{
+		"id": "c3269c01-409c-47eb-a992-88c90925599b",
+		"orderId": 14,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "sfafaf",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-05-02T12:18:17.761Z",
+		"deletedAt": null
+	},
+	{
+		"id": "9dbd07a8-3d97-4ebd-8418-f9f011b9ee8b",
+		"orderId": 18,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "Nbb",
+		"postalCode": 1000,
+		"phoneNumber": "071683838",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "7d002b6d-df0c-4ce7-bbd6-fd27068fa8fe",
+					"name": "Премиум Микс",
+					"image": "/data/images/products/3_product.png",
+					"price": 1000,
+					"discount": 0,
+					"quantity": 3
+				}
+			],
+			"priceSummary": {
+				"total": 3000,
+				"shipping": 0,
+				"subtotal": 3000
+			}
+		},
+		"createdAt": "2025-05-02T15:11:37.694Z",
+		"deletedAt": null
+	},
+	{
+		"id": "45d1fcd2-fbeb-4d63-ab2c-7bf23e297820",
+		"orderId": 19,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "Gdgs",
+		"postalCode": 1000,
+		"phoneNumber": "071545455",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-02T15:16:56.793Z",
+		"deletedAt": null
+	},
+	{
+		"id": "39ec2b6d-fcdb-46e4-8d71-c00470c1159d",
+		"orderId": 20,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "Nbb",
+		"postalCode": 1000,
+		"phoneNumber": "074676766",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-02T15:17:24.028Z",
+		"deletedAt": null
+	},
+	{
+		"id": "a5d9b87a-5f6f-43c7-abd0-f2e2b45d761c",
+		"orderId": 23,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fasfafa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-03T16:36:52.632Z",
+		"deletedAt": null
+	},
+	{
+		"id": "ac1e8313-304a-46bc-95ec-dffd169ee7a1",
+		"orderId": 24,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fsafas",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-03T16:40:08.190Z",
+		"deletedAt": null
+	},
+	{
+		"id": "2e14a606-1e93-401c-b492-6776ab2f5ae9",
+		"orderId": 25,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "safsafa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-05-03T16:42:55.384Z",
+		"deletedAt": null
+	},
+	{
+		"id": "257daecf-ceff-4d54-a6a6-9a1112585f9b",
+		"orderId": 26,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fasfas",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "7d002b6d-df0c-4ce7-bbd6-fd27068fa8fe",
+					"name": "Премиум Микс",
+					"image": "/data/images/products/3_product.png",
+					"price": 1000,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 1150,
+				"shipping": 150,
+				"subtotal": 1000
+			}
+		},
+		"createdAt": "2025-05-03T16:47:00.081Z",
+		"deletedAt": null
+	},
+	{
+		"id": "8e0f7cae-9680-455d-ab8e-8a52643c917b",
+		"orderId": 27,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fasfsa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-05-03T16:50:57.204Z",
+		"deletedAt": null
+	},
+	{
+		"id": "d6e0cb07-07de-4872-9f8e-dfa780a5c785",
+		"orderId": 28,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "hinjk",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				},
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 1445,
+				"shipping": 150,
+				"subtotal": 1295
+			}
+		},
+		"createdAt": "2025-05-03T16:52:32.647Z",
+		"deletedAt": null
+	},
+	{
+		"id": "c347b966-22f9-4bac-bdce-776b43625b9b",
+		"orderId": 29,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fsafsa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-03T16:54:53.445Z",
+		"deletedAt": null
+	},
+	{
+		"id": "7fbbf95f-f98f-44f4-a155-e683d8ab3bd6",
+		"orderId": 30,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fasfsa",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-05-03T16:57:00.776Z",
+		"deletedAt": null
+	},
+	{
+		"id": "8dc1518f-f104-4f24-8df7-58ecd693bf45",
+		"orderId": 31,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "b jhk",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-04T00:06:01.128Z",
+		"deletedAt": null
+	},
+	{
+		"id": "5aaa4e9e-fbcd-40b9-a84c-adc3ab609a41",
+		"orderId": 32,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "fsad af",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 745,
+				"shipping": 150,
+				"subtotal": 595
+			}
+		},
+		"createdAt": "2025-05-04T00:10:57.617Z",
+		"deletedAt": null
+	},
+	{
+		"id": "14b9f138-beb4-4ae7-bd30-b9f4bc05a7c5",
+		"orderId": 33,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "inpjk",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 850,
+				"shipping": 150,
+				"subtotal": 700
+			}
+		},
+		"createdAt": "2025-05-04T00:16:12.338Z",
+		"deletedAt": null
+	},
+	{
+		"id": "d0646d04-6146-4246-88f5-2d8f60095dfe",
+		"orderId": 34,
+		"status": false,
+		"firstName": "Mario",
+		"lastName": "Gurmesevski",
+		"address": "Naum Ohridski 57",
+		"city": "Skopje",
+		"municipality": "фасфса",
+		"postalCode": 1000,
+		"phoneNumber": "071746040",
+		"email": "mariogurmesevski1@gmail.com",
+		"cart": {
+			"items": [
+				{
+					"id": "335936f2-4933-4957-a069-98d330699f16",
+					"name": "Премиум Багремов Мед",
+					"image": "/data/images/products/2_product.png",
+					"price": 595,
+					"discount": 15,
+					"quantity": 1
+				},
+				{
+					"id": "82072bab-c70b-483a-afb4-e8af906891e3",
+					"name": "Премиум Мед",
+					"image": "/uploads/honey/IMG_3750-meadow-raw-honey-b364218b-d071-4152-970f-1acd64072c55.png",
+					"price": 700,
+					"discount": 0,
+					"quantity": 1
+				}
+			],
+			"priceSummary": {
+				"total": 1445,
+				"shipping": 150,
+				"subtotal": 1295
+			}
+		},
+		"createdAt": "2025-05-04T12:10:52.398Z",
+		"deletedAt": null
+	}
+]

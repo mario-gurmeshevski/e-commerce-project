@@ -5,11 +5,24 @@ import { CartContext, CartItem } from './cartContext.tsx'
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 	const [cartItems, setCartItems] = useState<CartItem[]>(() => {
 		const storedCart = localStorage.getItem('cart')
-		return storedCart ? JSON.parse(storedCart) : []
+		if (storedCart) {
+			try {
+				return JSON.parse(storedCart)
+			} catch (error) {
+				console.error('Failed to parse cart data from localStorage:', error)
+				localStorage.removeItem('cart') // Clear corrupted data
+				return []
+			}
+		}
+		return []
 	})
 
 	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cartItems))
+		try {
+			localStorage.setItem('cart', JSON.stringify(cartItems))
+		} catch (error) {
+			console.error('Failed to save cart data to localStorage:', error)
+		}
 	}, [cartItems])
 
 	const clearCart = () => {

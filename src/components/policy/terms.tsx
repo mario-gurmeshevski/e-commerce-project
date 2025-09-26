@@ -15,7 +15,6 @@ const Terms = () => {
 				</header>
 
 				<div className="space-y-12">
-					{/* Рок на испорака */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold  mb-6 flex items-center">
 							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
@@ -28,9 +27,8 @@ const Terms = () => {
 							</p>
 							<div className="p-4 rounded-lg border">
 								<p>
-									<span className="font-semibold">BeeHappy-Makmela</span> го задржува
-									правото да го продолжи рокот на испорака во претходен договор со
-									купувачот.
+									<span className="font-semibold">E Commerce</span> го задржува правото
+									да го продолжи рокот на испорака во претходен договор со купувачот.
 								</p>
 							</div>
 							<p>
@@ -39,7 +37,6 @@ const Terms = () => {
 						</div>
 					</div>
 
-					{/* Преземање на нарачката */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold  mb-6 flex items-center">
 							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
@@ -65,7 +62,6 @@ const Terms = () => {
 						</div>
 					</div>
 
-					{/* Цена на испорака */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
 							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
@@ -85,7 +81,6 @@ const Terms = () => {
 						</div>
 					</div>
 
-					{/* Прием на производите */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
 							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
@@ -108,7 +103,6 @@ const Terms = () => {
 						</div>
 					</div>
 
-					{/* Враќање и замена */}
 					<div className="py-8 border-b border-gray-100">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
 							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
@@ -119,7 +113,7 @@ const Terms = () => {
 								Доколку купувачот сака да го замени производот, должен е да го чува
 								неоштетен, неотпакуван и неупотребуван заедно со сите приложени
 								документи. Доколку има доцнење од страна на компанијата која ја врши
-								доставата, BeeHappy-Makmela не може да превземе никаква одговорност.
+								доставата, E Commerce не може да превземе никаква одговорност.
 							</p>
 							<p>
 								Во случај купувачот да сака да го врати производот, не по наша вина или
@@ -129,7 +123,6 @@ const Terms = () => {
 						</div>
 					</div>
 
-					{/* Останати информации */}
 					<div className="py-8">
 						<h3 className="text-xl font-semibold mb-6 flex items-center">
 							<span className="w-2 h-2 bg-black rounded-full mr-2"></span>

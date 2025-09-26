@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import {
 	MinusIcon,
 	PlusIcon,
 	TruckIcon,
 	XMarkIcon,
 } from '@heroicons/react/24/solid'
-import { useCart } from './cart/useCart.tsx'
+import { useCart } from '../cart/useCart.tsx'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import ErrorMessage from '../common/ErrorMessage.tsx'
+import { fetchWithFallback } from '../../utils/apiClient.ts'
+import { API_CONFIG } from '../../utils/apiConfig'
 
 export default function Checkout() {
 	const [formData, setFormData] = useState({
@@ -23,12 +25,36 @@ export default function Checkout() {
 	})
 
 	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState<string | null>(null)
 	const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+	const [isApiAccessible, setIsApiAccessible] = useState<boolean | null>(null)
 	const { cartItems, addToCart, removeFromCart, decreaseQuantity, clearCart } =
 		useCart()
 	const navigate = useNavigate()
 	const preciseRound = (num: number) => Math.round(num)
 	const isMobile = window.innerWidth <= 768
+
+	// Check API accessibility on component mount
+	useEffect(() => {
+		const checkApiAccess = async () => {
+			// If API is disabled by configuration, set to fallback mode
+			if (!API_CONFIG.useApi) {
+				setIsApiAccessible(false)
+				return
+			}
+
+			try {
+				// Try a simple API endpoint to check if API is accessible
+				await fetchWithFallback(API_CONFIG.endpoints.honey, 'honey.json')
+				setIsApiAccessible(true)
+			} catch (err) {
+				// If API is not accessible, assume we're using fallback data
+				setIsApiAccessible(false)
+			}
+		}
+
+		checkApiAccess()
+	}, [])
 
 	const subtotal = cartItems.reduce((sum, item) => {
 		const discountFactor = 1 - (item.discount || 0) / 100
@@ -39,6 +65,9 @@ export default function Checkout() {
 	const shipping = subtotal >= 2000 ? 0 : 150
 	const total = subtotal + shipping
 
+	// Validates the checkout form data
+	// Checks phone number format and postal code format
+	// Sets form errors state with validation messages
 	const validateForm = () => {
 		const errors: Record<string, string> = {}
 		const phoneRegex = /^07\d{7}$/
@@ -57,6 +86,9 @@ export default function Checkout() {
 		return Object.keys(errors).length === 0
 	}
 
+	// Handles input changes in the checkout form
+	// Updates form data state and clears associated validation errors
+	// Applies numeric formatting for phone numbers and postal codes
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
 
@@ -91,24 +123,37 @@ export default function Checkout() {
 		}))
 	}
 
+	// Handles form submission for placing an order
+	// Validates the form, checks API availability, and submits the order data
+	// Shows appropriate feedback messages using toast notifications
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (!validateForm()) return
 
-		setLoading(true)
+		// If using fallback data, show a message instead of submitting
+		if (isApiAccessible === false) {
+			toast.error(
+				'Checkout функцијата е оневозможена кога се користи локален JSON податок. Ве молиме користете ја контакт формата за да ја испратите вашата нарачка.',
+				{
+					style: isMobile
+						? {
+								position: 'sticky',
+								bottom: 0,
+								left: 0,
+								right: 0,
+								margin: 'auto',
+								width: 'fit-content',
+						  }
+						: {},
+				}
+			)
+			return
+		}
 
-		const toastId = toast.loading('Вашата нарачка се процесира...', {
-			style: isMobile
-				? {
-						position: 'sticky',
-						bottom: 0,
-						left: 0,
-						right: 0,
-						margin: 'auto',
-						width: 'fit-content',
-				  }
-				: {},
-		})
+		setLoading(true)
+		setError(null)
+
+		const _toastId = toast.loading('Вашата нарачка се процесира...', {})
 
 		try {
 			const orderData = {
@@ -130,34 +175,45 @@ export default function Checkout() {
 				},
 			}
 
-			const orderPromise = axios.post('/api/order/create', orderData)
+			// Create order - this is a POST request, so we'll use fetch directly
+			const _response = await fetch(API_CONFIG.endpoints.createOrder, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(orderData),
+			})
 
-			setTimeout(() => {
-				toast.success('Нарачката е успешно пратена!', {
-					id: toastId,
-					duration: 1000,
-					style: isMobile
-						? {
-								position: 'sticky',
-								bottom: 0,
-								left: 0,
-								right: 0,
-								margin: 'auto',
-								width: 'fit-content',
-						  }
-						: {},
-				})
-				navigate('/')
-				clearCart()
-			}, 1000)
+			if (!_response.ok) {
+				throw new Error('Network response was not ok')
+			}
 
-			await orderPromise
+			// Important: Checkout directly calls fetch instead of fetchWithFallback
+			// This creates potential issue when API is disabled since direct fetch
+			// won't be intercepted by fallback mechanism
+			toast.success('Нарачката е успешно пратена!', {
+				id: _toastId,
+				duration: 1000,
+				style: isMobile
+					? {
+							position: 'sticky',
+							bottom: 0,
+							left: 0,
+							right: 0,
+							margin: 'auto',
+							width: 'fit-content',
+					  }
+					: {},
+			})
+			navigate('/')
+			clearCart()
+
+			await _response.json()
 		} catch (err) {
-			// console.error(err)
 			toast.error(
-				'Настана грешка при праќањето на нарачката. Обидете се повторно.',
+				'Настана грешка при праќањето на нарачката. Обидете се повторно или контактирајте нè директно.',
 				{
-					id: toastId,
+					id: _toastId,
 					style: isMobile
 						? {
 								position: 'sticky',
@@ -175,16 +231,15 @@ export default function Checkout() {
 		}
 	}
 
+	if (error) return <ErrorMessage message={error} />
+
 	return (
 		<div className="min-h-screen py-8 px-4 sm:px-6">
 			<div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-				{/* Checkout Form */}
 				<div className="bg-white p-6 rounded-2xl shadow-xl">
 					<h2 className="text-2xl font-bold text-black mb-6">Детали за наплата</h2>
-
 					<form className="space-y-6" onSubmit={handleSubmit}>
 						<div className="space-y-5">
-							{/* Personal Info Section */}
 							<div className="space-y-4">
 								<h3 className="text-lg font-semibold text-black">Лични информации</h3>
 								<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -231,7 +286,6 @@ export default function Checkout() {
 								</div>
 							</div>
 
-							{/* Shipping Address Section */}
 							<div className="space-y-4">
 								<h3 className="text-lg font-semibold text-black">Адреса за достава</h3>
 								<div>
@@ -315,7 +369,6 @@ export default function Checkout() {
 							</div>
 						</div>
 
-						{/* Payment Section */}
 						<div className="space-y-4 pt-6 border-t border-gray-200">
 							<h3 className="text-lg font-semibold text-black">Начин на наплата</h3>
 							<div className="space-y-3">
@@ -329,13 +382,29 @@ export default function Checkout() {
 							</div>
 						</div>
 
+						{isApiAccessible === false && (
+							<div className="bg-gray-200 border border-gray-300 rounded-lg p-4 mb-4">
+								<p className="text-red-600 text-center font-medium">
+									Checkout функцијата е оневозможена кога се користи локален JSON
+									податок. Ве молиме користете ја контакт формата за да ја испратите
+									вашата нарачка.
+								</p>
+							</div>
+						)}
+
 						<button
 							type="submit"
-							disabled={loading}
-							className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+							disabled={loading || isApiAccessible === false}
+							className={`w-full py-4 px-6 rounded-lg font-medium transition-colors ${
+								loading || isApiAccessible === false
+									? 'bg-blue-400 text-white cursor-not-allowed'
+									: 'bg-blue-600 text-white hover:bg-blue-700'
+							}`}
 						>
 							{loading ? (
 								<div className="flex items-center justify-center">Процесира...</div>
+							) : isApiAccessible === false ? (
+								'Checkout оневозможен'
 							) : (
 								'Потврди нарачка'
 							)}
@@ -343,7 +412,6 @@ export default function Checkout() {
 					</form>
 				</div>
 
-				{/* Order Summary */}
 				<div className={`bg-white p-6 rounded-2xl shadow-xl h-fit`}>
 					<h2 className="text-2xl font-bold text-black mb-6">Вашата нарачка</h2>
 					<div className="space-y-6">
@@ -406,7 +474,6 @@ export default function Checkout() {
 							</div>
 						))}
 
-						{/* Order Totals */}
 						<div className="space-y-4 pt-6 border-t border-gray-200">
 							<div className="flex justify-between">
 								<span className="text-black">Цена</span>

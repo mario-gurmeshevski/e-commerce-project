@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import 'react-medium-image-zoom/dist/styles.css'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import Loader from '../common/Loader.tsx'
 import type { Health } from '../../interfaces/health.ts'
+import ErrorMessage from '../common/ErrorMessage.tsx'
+import { fetchWithFallback } from '../../utils/apiClient.ts'
+import { API_CONFIG } from '../../utils/apiConfig'
 
 const Health = () => {
 	const [health, setHealth] = useState<Health[]>([])
@@ -13,10 +15,9 @@ const Health = () => {
 
 	useEffect(() => {
 		setLoading(true)
-		setError(null)
-		axios
-			.get<{ health: Health[] }>('/api/health')
-			.then((res) => {
+			setError(null)
+			fetchWithFallback<{ health: Health[] }>(API_CONFIG.endpoints.health, 'health.json')
+				.then((res) => {
 				if (Array.isArray(res.data.health)) {
 					setHealth(res.data.health)
 				} else if (Array.isArray(res.data)) {
@@ -42,14 +43,7 @@ const Health = () => {
 	}
 
 	if (loading) return <Loader />
-	if (error)
-		return (
-			<div className="flex justify-center items-center h-60 animate-fade-in">
-				<div className="bg-gray-50 border border-gray-200 text-black px-6 py-4 rounded shadow">
-					{error}
-				</div>
-			</div>
-		)
+	if (error) return <ErrorMessage message={error} />
 
 	return (
 		<main className="container mx-auto px-4 py-8 md:pb-12 md:pt-10">
