@@ -1,4 +1,4 @@
-# Makmela - Natural Honey & Bee Products E-commerce Platform
+# E Commerce
 
 A modern, fully-featured e-commerce application specializing in natural honey and bee products, built with React, TypeScript, and Tailwind CSS.
 
